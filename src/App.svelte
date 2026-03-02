@@ -92,7 +92,6 @@
       currentCache = null;
     }
     activeSkinName = entry.name;
-    activeSkinEntry = entry;
     imageCache = {};
     missingTextures = [];
     parseErrors = [];
