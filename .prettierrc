@@ -1,0 +1,22 @@
+{
+  "plugins": [
+    "prettier-plugin-svelte",
+    "prettier-plugin-tailwindcss"
+  ],
+  "overrides": [
+    {
+      "files": "*.svelte",
+      "options": {
+        "parser": "svelte",
+        "svelteAllowShorthand": false,
+        "arrowParens": "always"
+      }
+    }
+  ],
+  "printWidth": 120,
+  "quoteProps": "consistent",
+  "semi": true,
+  "singleQuote": false,
+  "bracketSameLine": false,
+  "htmlWhitespaceSensitivity": "ignore"
+}

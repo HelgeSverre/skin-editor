@@ -1,0 +1,5191 @@
+{
+    "name" : "Root",
+    "root" : {
+        "x" : "0",
+        "y" : "0",
+        "width" : "2754",
+        "height" : "1521",
+        "scale" : "0.5"
+    },
+	"templates" : [
+        {
+            "name" : "pm_treeview",
+            "treeview" : {
+                "alignH" : "L",
+                "alignV" : "C",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+				"textHeight" : "12",
+                "color" : "f6f8fb",
+                "backgroundColor" : "202b33",
+                "selectedItemBackgroundColor" : "9ca1ab",
+				"bold": "0"
+            }
+        },
+        {
+            "name" : "pm_search",
+            "texteditor" : {
+                "alignH" : "L",
+                "alignV" : "C",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+				"textHeight" : "11",
+                "color" : "f6f8fb",
+                "backgroundColor" : "202b33",
+				"text": "Filter...",
+				"bold": "0"
+            }
+        },
+        {
+            "name" : "pm_scrollbar",
+            "scrollbar" : {
+                "color" : "9ca1ab",
+            }
+        },
+        {
+            "name" : "pm_listbox",
+            "listbox" : {
+                "alignH" : "L",
+                "alignV" : "C",
+                "color" : "f6f8fb",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+				"textHeight" : "12",
+                "backgroundColor" : "202b33",
+                "selectedItemBackgroundColor" : "9ca1ab",
+				"bold": "0"
+             }
+        },
+        {
+            "name" : "pm_info_name",
+            "label" : {
+                "alignH" : "L",
+                "alignV" : "T",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "color" : "f6f8fb",
+                "backgroundColor" : "202b33",
+                "textHeight" : "24",
+				"bold": "1"
+            }
+        },
+        {
+            "name" : "pm_info_label",
+            "label" : {
+                "alignH" : "L",
+                "alignV" : "B",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "color" : "9ca1ab",
+                "textHeight" : "14"
+            }
+        },
+        {
+            "name" : "pm_info_text",
+            "label" : {
+                "alignH" : "L",
+                "alignV" : "T",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "color" : "f6f8fb",
+                "textHeight" : "14"
+            }
+        },
+        {
+            "name" : "pm_status_label",
+            "label" : {
+                "alignH" : "L",
+                "alignV" : "C",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "color" : "f6f8fb",
+                "backgroundColor" : "202b33",
+                "textHeight" : "14",
+				"bold": "0"
+            }
+        }
+	],
+    "children" : [
+        {
+            "name" : "bg",
+            "image" : {
+                "x" : "0",
+                "y" : "0",
+                "width" : "2754",
+                "height" : "1521",
+                "texture" : "main_bg"
+            }
+           },
+		   {
+                    "name" : "MainVolume",
+                    "parameterAttachment" : {
+                        "parameter" : "Patch Volume"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "116",
+                        "y" : "101",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+        {
+            "name" : "PlayModeSingle",
+            "button" : {
+                "isToggle" : "1",
+                "radioGroupId" : "5",
+                "normalImage" : "0",
+                "overImage" : "0",
+                "downImage" : "1",
+                "normalImageOn" : "1",
+                "overImageOn" : "1",
+                "downImageOn" : "1",
+                "x" : "351",
+                "y" : "62",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn2-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+        {
+            "name" : "PlayModeMulti",
+            "button" : {
+                "isToggle" : "1",
+                "radioGroupId" : "5",
+                "normalImage" : "0",
+                "overImage" : "0",
+                "downImage" : "1",
+                "normalImageOn" : "1",
+                "overImageOn" : "1",
+                "downImageOn" : "1",
+                "x" : "427",
+                "y" : "62",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn2-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+         {
+            "name" : "PatchName",
+            "label" : {
+                "text" : "OvertureCK",
+                "textHeight" : "40",
+                "color" : "004b6c",
+				"fontFile" : "Digital",
+                "fontName" : "Digital",
+                "alignH" : "L",
+                "alignV" : "C",
+                "x" : "1148",
+                "y" : "130",
+                "width" : "400",
+                "height" : "50"
+            }
+        },
+        {
+            "name" : "FocusedParameterName",
+            "label" : {
+                "text" : "Osc 1 Semitone",
+                "textHeight" : "18",
+                "color" : "FFFFFFE0",
+				"fontFile" : "Digital",
+                "fontName" : "Digital",
+                "alignH" : "L",
+                "alignV" : "T",
+                "x" : "1150",
+                "y" : "105",
+                "width" : "220",
+                "height" : "24"
+            }
+        },
+        {
+            "name" : "FocusedParameterValue",
+            "label" : {
+                "text" : "-12",
+                "textHeight" : "18",
+                "color" : "FFFFFFE0",
+				"fontFile" : "Digital",
+                "fontName" : "Digital",
+                "alignH" : "L",
+                "alignV" : "T",
+                "x" : "1382",
+                "y" : "105",
+                "width" : "190",
+                "height" : "24"
+            }
+        },
+        {
+            "name" : "PresetSave",
+            "button" : {
+                "normalImage" : "0",
+                "overImage" : "0",
+                "downImage" : "1",
+                "normalImageOn" : "1",
+                "overImageOn" : "1",
+                "downImageOn" : "1",
+                "x" : "1771",
+                "y" : "62",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn2-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+        {
+            "name" : "PresetLoad",
+            "button" : {
+                "normalImage" : "0",
+                "overImage" : "0",
+                "downImage" : "1",
+                "normalImageOn" : "1",
+                "overImageOn" : "1",
+                "downImageOn" : "1",
+                "x" : "1847",
+                "y" : "62",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn2-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+        {
+            "name" : "Presets",
+            "button" : {
+                "isToggle" : "1",
+                "radioGroupId" : "42",
+                "normalImage" : "0",
+                "overImage" : "0",
+                "downImage" : "1",
+                "normalImageOn" : "1",
+                "overImageOn" : "1",
+                "downImageOn" : "1",
+                "x" : "1923",
+                "y" : "62",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn2-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+        {
+            "name" : "RomSelector",
+            "combobox" : {
+                "text" : "Access_Virus_C_OS_6.5.bin",
+                "textHeight" : "16",
+                "color" : "004b6c",
+				"fontFile" : "Digital",
+                "fontName" : "Digital",
+                "alignH" : "R",
+                "alignV" : "C",
+                "x" : "1196",
+                "y" : "170",
+                "width" : "520",
+                "height" : "50"
+            }
+        },
+		{
+            "name" : "RomLoaded",
+            "label" : {
+                "text" : "FW:",
+                "textHeight" : "16",
+                "color" : "004b6c",
+				"fontFile" : "Digital",
+                "fontName" : "Digital",
+                "alignH" : "L",
+                "alignV" : "C",
+                "x" : "1148",
+                "y" : "170",
+                "width" : "120",
+                "height" : "50"
+            }
+        },
+        {
+            "name" : "TabOsc",
+            "button" : {
+                "isToggle" : "1",
+                "radioGroupId" : "42",
+                "normalImage" : "1",
+                "overImage" : "1",
+                "downImage" : "0",
+                "normalImageOn" : "0",
+                "overImageOn" : "0",
+                "downImageOn" : "0",
+                "x" : "677",
+                "y" : "62",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn1-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+        {
+            "name" : "TabLfo",
+            "button" : {
+                "isToggle" : "1",
+                "radioGroupId" : "42",
+                "normalImage" : "1",
+                "overImage" : "1",
+                "downImage" : "0",
+                "normalImageOn" : "0",
+                "overImageOn" : "0",
+                "downImageOn" : "0",
+                "x" : "753",
+                "y" : "62",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn1-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+        {
+            "name" : "TabEffects",
+            "button" : {
+                "isToggle" : "1",
+                "radioGroupId" : "42",
+                "normalImage" : "1",
+                "overImage" : "1",
+                "downImage" : "0",
+                "normalImageOn" : "0",
+                "overImageOn" : "0",
+                "downImageOn" : "0",
+                "x" : "829",
+                "y" : "62",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn1-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+        {
+            "name" : "TabArp",
+            "button" : {
+                "isToggle" : "1",
+                "radioGroupId" : "42",
+                "normalImage" : "1",
+                "overImage" : "1",
+                "downImage" : "0",
+                "normalImageOn" : "0",
+                "overImageOn" : "0",
+                "downImageOn" : "0",
+                "x" : "905",
+                "y" : "62",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn1-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+        {
+            "name" : "SelectPart",
+            "button" : {
+                "isToggle" : "1",
+                "radioGroupId" : "16",
+                "normalImage" : "0",
+                "downImage" : "1",
+                "normalImageOn" : "1",
+                "downImageOn" : "1",
+                "x" : "113",
+                "y" : "358",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn2-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+        {
+            "name" : "PresetName",
+            "textbutton" : {
+                "text" : "OvertureCK",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "24",
+                "color" : "FFFFFFD4",
+                "x" : "170",
+                "y" : "471",
+                "width" : "180",
+                "height" : "26"
+            }
+        },
+        {
+            "name" : "PresetPrev",
+            "textbutton" : {
+                "text" : "PREV",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "18",
+                "color" : "ffffff",
+                "x" : "205",
+                "y" : "444",
+                "width" : "60",
+                "height" : "20"
+            }
+        },
+        {
+            "name" : "PresetNext",
+            "textbutton" : {
+                "text" : "NEXT",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "18",
+                "color" : "ffffff",
+                "x" : "280",
+                "y" : "444",
+                "width" : "60",
+                "height" : "20"
+            }
+        },
+        {
+            "name" : "PartVolume",
+            "rotary" : {
+            },
+            "spritesheet" : {
+                "x" : "105",
+                "y" : "512",
+                "width" : "104",
+                "height" : "104",
+                "texture" : "knob_2-104x104",
+                "tileSizeX" : "104",
+                "tileSizeY" : "104"
+            }
+        },
+        {
+            "name" : "PartPan",
+            "rotary" : {
+            },
+            "spritesheet" : {
+                "x" : "245",
+                "y" : "512",
+                "width" : "104",
+                "height" : "104",
+                "texture" : "knob_2-104x104",
+                "tileSizeX" : "104",
+                "tileSizeY" : "104"
+            }
+        },
+		{
+            "name" : "SelectPart",
+            "button" : {
+                "isToggle" : "1",
+                "radioGroupId" : "16",
+                "normalImage" : "0",
+                "downImage" : "1",
+                "normalImageOn" : "1",
+                "downImageOn" : "1",
+                "x" : "440",
+                "y" : "358",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn2-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+        {
+            "name" : "PresetName",
+            "textbutton" : {
+                "text" : "OvertureCK",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "24",
+                "color" : "FFFFFFD4",
+                "x" : "497",
+                "y" : "471",
+                "width" : "180",
+                "height" : "26"
+            }
+        },
+        {
+            "name" : "PresetPrev",
+            "textbutton" : {
+                "text" : "PREV",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "18",
+                "color" : "ffffff",
+                "x" : "532",
+                "y" : "444",
+                "width" : "60",
+                "height" : "20"
+            }
+        },
+        {
+            "name" : "PresetNext",
+            "textbutton" : {
+                "text" : "NEXT",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "18",
+                "color" : "ffffff",
+                "x" : "607",
+                "y" : "444",
+                "width" : "60",
+                "height" : "20"
+            }
+        },
+        {
+            "name" : "PartVolume",
+            "rotary" : {
+            },
+            "spritesheet" : {
+                "x" : "432",
+                "y" : "512",
+                "width" : "104",
+                "height" : "104",
+                "texture" : "knob_2-104x104",
+                "tileSizeX" : "104",
+                "tileSizeY" : "104"
+            }
+        },
+        {
+            "name" : "PartPan",
+            "rotary" : {
+            },
+            "spritesheet" : {
+                "x" : "572",
+                "y" : "512",
+                "width" : "104",
+                "height" : "104",
+                "texture" : "knob_2-104x104",
+                "tileSizeX" : "104",
+                "tileSizeY" : "104"
+            }
+        },
+		{
+            "name" : "SelectPart",
+            "button" : {
+                "isToggle" : "1",
+                "radioGroupId" : "16",
+                "normalImage" : "0",
+                "downImage" : "1",
+                "normalImageOn" : "1",
+                "downImageOn" : "1",
+                "x" : "113",
+                "y" : "624",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn2-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+        {
+            "name" : "PresetName",
+            "textbutton" : {
+                "text" : "OvertureCK",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "24",
+                "color" : "FFFFFFD4",
+                "x" : "170",
+                "y" : "737",
+                "width" : "180",
+                "height" : "26"
+            }
+        },
+        {
+            "name" : "PresetPrev",
+            "textbutton" : {
+                "text" : "PREV",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "18",
+                "color" : "ffffff",
+                "x" : "205",
+                "y" : "710",
+                "width" : "60",
+                "height" : "20"
+            }
+        },
+        {
+            "name" : "PresetNext",
+            "textbutton" : {
+                "text" : "NEXT",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "18",
+                "color" : "ffffff",
+                "x" : "280",
+                "y" : "710",
+                "width" : "60",
+                "height" : "20"
+            }
+        },
+        {
+            "name" : "PartVolume",
+            "rotary" : {
+            },
+            "spritesheet" : {
+                "x" : "105",
+                "y" : "778",
+                "width" : "104",
+                "height" : "104",
+                "texture" : "knob_2-104x104",
+                "tileSizeX" : "104",
+                "tileSizeY" : "104"
+            }
+        },
+        {
+            "name" : "PartPan",
+            "rotary" : {
+            },
+            "spritesheet" : {
+                "x" : "245",
+                "y" : "778",
+                "width" : "104",
+                "height" : "104",
+                "texture" : "knob_2-104x104",
+                "tileSizeX" : "104",
+                "tileSizeY" : "104"
+            }
+        },
+		{
+            "name" : "SelectPart",
+            "button" : {
+                "isToggle" : "1",
+                "radioGroupId" : "16",
+                "normalImage" : "0",
+                "downImage" : "1",
+                "normalImageOn" : "1",
+                "downImageOn" : "1",
+                "x" : "440",
+                "y" : "624",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn2-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+        {
+            "name" : "PresetName",
+            "textbutton" : {
+                "text" : "OvertureCK",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "24",
+                "color" : "FFFFFFD4",
+                "x" : "497",
+                "y" : "737",
+                "width" : "180",
+                "height" : "26"
+            }
+        },
+        {
+            "name" : "PresetPrev",
+            "textbutton" : {
+                "text" : "PREV",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "18",
+                "color" : "ffffff",
+                "x" : "532",
+                "y" : "710",
+                "width" : "60",
+                "height" : "20"
+            }
+        },
+        {
+            "name" : "PresetNext",
+            "textbutton" : {
+                "text" : "NEXT",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "18",
+                "color" : "ffffff",
+                "x" : "607",
+                "y" : "710",
+                "width" : "60",
+                "height" : "20"
+            }
+        },
+        {
+            "name" : "PartVolume",
+            "rotary" : {
+            },
+            "spritesheet" : {
+                "x" : "432",
+                "y" : "778",
+                "width" : "104",
+                "height" : "104",
+                "texture" : "knob_2-104x104",
+                "tileSizeX" : "104",
+                "tileSizeY" : "104"
+            }
+        },
+        {
+            "name" : "PartPan",
+            "rotary" : {
+            },
+            "spritesheet" : {
+                "x" : "572",
+                "y" : "778",
+                "width" : "104",
+                "height" : "104",
+                "texture" : "knob_2-104x104",
+                "tileSizeX" : "104",
+                "tileSizeY" : "104"
+            }
+        },
+		{
+            "name" : "SelectPart",
+            "button" : {
+                "isToggle" : "1",
+                "radioGroupId" : "16",
+                "normalImage" : "0",
+                "downImage" : "1",
+                "normalImageOn" : "1",
+                "downImageOn" : "1",
+                "x" : "113",
+                "y" : "890",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn2-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+        {
+            "name" : "PresetName",
+            "textbutton" : {
+                "text" : "OvertureCK",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "24",
+                "color" : "FFFFFFD4",
+                "x" : "170",
+                "y" : "1003",
+                "width" : "180",
+                "height" : "26"
+            }
+        },
+        {
+            "name" : "PresetPrev",
+            "textbutton" : {
+                "text" : "PREV",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "18",
+                "color" : "ffffff",
+                "x" : "205",
+                "y" : "976",
+                "width" : "60",
+                "height" : "20"
+            }
+        },
+        {
+            "name" : "PresetNext",
+            "textbutton" : {
+                "text" : "NEXT",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "18",
+                "color" : "ffffff",
+                "x" : "280",
+                "y" : "976",
+                "width" : "60",
+                "height" : "20"
+            }
+        },
+        {
+            "name" : "PartVolume",
+            "rotary" : {
+            },
+            "spritesheet" : {
+                "x" : "105",
+                "y" : "1044",
+                "width" : "104",
+                "height" : "104",
+                "texture" : "knob_2-104x104",
+                "tileSizeX" : "104",
+                "tileSizeY" : "104"
+            }
+        },
+        {
+            "name" : "PartPan",
+            "rotary" : {
+            },
+            "spritesheet" : {
+                "x" : "245",
+                "y" : "1044",
+                "width" : "104",
+                "height" : "104",
+                "texture" : "knob_2-104x104",
+                "tileSizeX" : "104",
+                "tileSizeY" : "104"
+            }
+        },
+		{
+            "name" : "SelectPart",
+            "button" : {
+                "isToggle" : "1",
+                "radioGroupId" : "16",
+                "normalImage" : "0",
+                "downImage" : "1",
+                "normalImageOn" : "1",
+                "downImageOn" : "1",
+                "x" : "440",
+                "y" : "890",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn2-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+        {
+            "name" : "PresetName",
+            "textbutton" : {
+                "text" : "OvertureCK",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "24",
+                "color" : "FFFFFFD4",
+                "x" : "497",
+                "y" : "1003",
+                "width" : "180",
+                "height" : "26"
+            }
+        },
+        {
+            "name" : "PresetPrev",
+            "textbutton" : {
+                "text" : "PREV",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "18",
+                "color" : "ffffff",
+                "x" : "532",
+                "y" : "976",
+                "width" : "60",
+                "height" : "20"
+            }
+        },
+        {
+            "name" : "PresetNext",
+            "textbutton" : {
+                "text" : "NEXT",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "18",
+                "color" : "ffffff",
+                "x" : "607",
+                "y" : "976",
+                "width" : "60",
+                "height" : "20"
+            }
+        },
+        {
+            "name" : "PartVolume",
+            "rotary" : {
+            },
+            "spritesheet" : {
+                "x" : "432",
+                "y" : "1044",
+                "width" : "104",
+                "height" : "104",
+                "texture" : "knob_2-104x104",
+                "tileSizeX" : "104",
+                "tileSizeY" : "104"
+            }
+        },
+        {
+            "name" : "PartPan",
+            "rotary" : {
+            },
+            "spritesheet" : {
+                "x" : "572",
+                "y" : "1044",
+                "width" : "104",
+                "height" : "104",
+                "texture" : "knob_2-104x104",
+                "tileSizeX" : "104",
+                "tileSizeY" : "104"
+            }
+        },
+		{
+            "name" : "SelectPart",
+            "button" : {
+                "isToggle" : "1",
+                "radioGroupId" : "16",
+                "normalImage" : "0",
+                "downImage" : "1",
+                "normalImageOn" : "1",
+                "downImageOn" : "1",
+                "x" : "113",
+                "y" : "1156",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn2-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+        {
+            "name" : "PresetName",
+            "textbutton" : {
+                "text" : "OvertureCK",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "24",
+                "color" : "FFFFFFD4",
+                "x" : "170",
+                "y" : "1269",
+                "width" : "180",
+                "height" : "26"
+            }
+        },
+        {
+            "name" : "PresetPrev",
+            "textbutton" : {
+                "text" : "PREV",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "18",
+                "color" : "ffffff",
+                "x" : "205",
+                "y" : "1242",
+                "width" : "60",
+                "height" : "20"
+            }
+        },
+        {
+            "name" : "PresetNext",
+            "textbutton" : {
+                "text" : "NEXT",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "18",
+                "color" : "ffffff",
+                "x" : "280",
+                "y" : "1242",
+                "width" : "60",
+                "height" : "20"
+            }
+        },
+        {
+            "name" : "PartVolume",
+            "rotary" : {
+            },
+            "spritesheet" : {
+                "x" : "105",
+                "y" : "1310",
+                "width" : "104",
+                "height" : "104",
+                "texture" : "knob_2-104x104",
+                "tileSizeX" : "104",
+                "tileSizeY" : "104"
+            }
+        },
+        {
+            "name" : "PartPan",
+            "rotary" : {
+            },
+            "spritesheet" : {
+                "x" : "245",
+                "y" : "1310",
+                "width" : "104",
+                "height" : "104",
+                "texture" : "knob_2-104x104",
+                "tileSizeX" : "104",
+                "tileSizeY" : "104"
+            }
+        },
+		{
+            "name" : "SelectPart",
+            "button" : {
+                "isToggle" : "1",
+                "radioGroupId" : "16",
+                "normalImage" : "0",
+                "downImage" : "1",
+                "normalImageOn" : "1",
+                "downImageOn" : "1",
+                "x" : "440",
+                "y" : "1156",
+                "width" : "78",
+                "height" : "129",
+                "texture" : "btn2-78x129",
+                "tileSizeX" : "78",
+                "tileSizeY" : "129"
+            }
+        },
+        {
+            "name" : "PresetName",
+            "textbutton" : {
+                "text" : "OvertureCK",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "24",
+                "color" : "FFFFFFD4",
+                "x" : "497",
+                "y" : "1269",
+                "width" : "180",
+                "height" : "26"
+            }
+        },
+        {
+            "name" : "PresetPrev",
+            "textbutton" : {
+                "text" : "PREV",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "18",
+                "color" : "ffffff",
+                "x" : "532",
+                "y" : "1242",
+                "width" : "60",
+                "height" : "20"
+            }
+        },
+        {
+            "name" : "PresetNext",
+            "textbutton" : {
+                "text" : "NEXT",
+				"fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "textHeight" : "18",
+                "color" : "ffffff",
+                "x" : "607",
+                "y" : "1242",
+                "width" : "60",
+                "height" : "20"
+            }
+        },
+        {
+            "name" : "PartVolume",
+            "rotary" : {
+            },
+            "spritesheet" : {
+                "x" : "432",
+                "y" : "1310",
+                "width" : "104",
+                "height" : "104",
+                "texture" : "knob_2-104x104",
+                "tileSizeX" : "104",
+                "tileSizeY" : "104"
+            }
+        },
+        {
+            "name" : "PartPan",
+            "rotary" : {
+            },
+            "spritesheet" : {
+                "x" : "572",
+                "y" : "1310",
+                "width" : "104",
+                "height" : "104",
+                "texture" : "knob_2-104x104",
+                "tileSizeX" : "104",
+                "tileSizeY" : "104"
+            }
+        },
+        {
+            "name" : "page_osc",
+            "image" : {
+                "x" : "724",
+                "y" : "325",
+                "width" : "1970",
+                "height" : "1125",
+                "texture" : "osc_page"
+            },
+            "children" : [
+                {
+                    "name" : "Osc1Shape",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc1 Shape"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "201",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Osc1PW",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc1 Pulsewidth"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "341",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Osc1Semi",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc1 Semitone"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "481",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Osc1Keyfollow",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc1 Keyfollow"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "620",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Osc2Shape",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc2 Shape"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "201",
+                        "y" : "296",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Osc2PW",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc2 Pulsewidth"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "341",
+                        "y" : "296",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Osc2Semi",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc2 Semitone"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "481",
+                        "y" : "296",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Osc2Keyfollow",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc2 Keyfollow"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "620",
+                        "y" : "296",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Osc2FM",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc2 FM Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "201",
+                        "y" : "482",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Osc2Detune",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc2 Detune"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "341",
+                        "y" : "482",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Osc2EnvFM",
+                    "parameterAttachment" : {
+                        "parameter" : "FM Filt Env Amt"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "481",
+                        "y" : "482",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Osc2Env",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc2 Filt Env Amt"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "620",
+                        "y" : "482",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Osc3Semitone",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc3 Semitone"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "201",
+                        "y" : "726",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Osc3Detune",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc3 Detune"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "341",
+                        "y" : "726",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Osc3Level",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc3 Volume"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "481",
+                        "y" : "726",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "UnisonDetune",
+                    "parameterAttachment" : {
+                        "parameter" : "Unison Detune"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "201",
+                        "y" : "958",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "UnisonPanSpread",
+                    "parameterAttachment" : {
+                        "parameter" : "Unison Pan Spread"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "341",
+                        "y" : "958",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "UnisonLfoPhase",
+                    "parameterAttachment" : {
+                        "parameter" : "Unison Lfo Phase"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "481",
+                        "y" : "958",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "UnisonPhaseInit",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc Init Phase"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "620",
+                        "y" : "958",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "Osc1WaveSelect",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc1 Wave Select"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "40",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "Osc2WaveSelect",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc2 Wave Select"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "40",
+                        "y" : "296",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "Osc2FMMode",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc FM Mode"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "40",
+                        "y" : "482",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "Osc3Mode",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc3 Mode"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "40",
+                        "y" : "726",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "UnisonVoices",
+                    "parameterAttachment" : {
+                        "parameter" : "Unison Mode"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "40",
+                        "y" : "958",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "SyncSwitch",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc2 Sync"
+                    },
+                    "button" : {
+                        "isToggle" : "1",
+                        "normalImage" : "1",
+                        "downImage" : "0",
+                        "normalImageOn" : "0",
+                        "downImageOn" : "1",
+                        "x" : "588",
+                        "y" : "238",
+                        "width" : "114",
+                        "height" : "33",
+                        "texture" : "sync-114x33",
+                        "tileSizeX" : "114",
+                        "tileSizeY" : "33"
+                    }
+                },
+                {
+                    "name" : "OscBalance",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc Balance"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "801",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "OscLevel",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc Mainvolume"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "940",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "NoiseLevel",
+                    "parameterAttachment" : {
+                        "parameter" : "Noise Volume"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "801",
+                        "y" : "296",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "RingModLevel",
+                    "parameterAttachment" : {
+                        "parameter" : "Ringmodulator Volume"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "940",
+                        "y" : "296",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "NoiseColor",
+                    "parameterAttachment" : {
+                        "parameter" : "Noise Color"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "801",
+                        "y" : "482",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "SubLevel",
+                    "parameterAttachment" : {
+                        "parameter" : "Suboscillator Volume"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "940",
+                        "y" : "726",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Portamento",
+                    "parameterAttachment" : {
+                        "parameter" : "Portamento Time"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "801",
+                        "y" : "958",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "SubOscTypeSwitch",
+                    "parameterAttachment" : {
+                        "parameter" : "Suboscillator Shape"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "801",
+                        "y" : "726",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "f1Cutoff",
+                    "parameterAttachment" : {
+                        "parameter" : "Cutoff"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1127",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "f1Reso",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter1 Resonance"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1267",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "f1EnvAmt",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter1 Env Amt"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1407",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "f1Keytrack",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter1 Keyfollow"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1547",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "f1ResVel",
+                    "parameterAttachment" : {
+                        "parameter" : "Resonance1 Velocity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1687",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "f1EnvVel",
+                    "parameterAttachment" : {
+                        "parameter" : "Flt1 EnvAmt Velocity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1826",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "Mode",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter1 Mode"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1127",
+                        "y" : "261",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "EnvPolarity",
+                    "combobox" : {
+                        "text" : "Positive",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1780",
+                        "y" : "207",
+                        "width" : "154",
+                        "height" : "24"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Filter1 Env Polarity"
+                    }
+                },
+                {
+                    "name" : "f2Cutoff",
+                    "parameterAttachment" : {
+                        "parameter" : "Cutoff2"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1127",
+                        "y" : "482",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "f2Reso",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter2 Resonance"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1267",
+                        "y" : "482",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "f2EnvAmt",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter2 Env Amt"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1407",
+                        "y" : "482",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "f2Keytrack",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter2 Keyfollow"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1547",
+                        "y" : "482",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "f2ResVel",
+                    "parameterAttachment" : {
+                        "parameter" : "Resonance2 Velocity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1687",
+                        "y" : "482",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "f2EnvVel",
+                    "parameterAttachment" : {
+                        "parameter" : "Flt2 EnvAmt Velocity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1826",
+                        "y" : "482",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "Mode",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter2 Mode"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1267",
+                        "y" : "261",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "EnvPolarity",
+                    "combobox" : {
+                        "text" : "Positive",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1780",
+                        "y" : "439",
+                        "width" : "154",
+                        "height" : "24"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Filter2 Env Polarity"
+                    }
+                },
+                {
+                    "name" : "FilterBalance",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter Balance"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1407",
+                        "y" : "261",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "FilterRouting",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter Routing"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1826",
+                        "y" : "261",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "FilterSaturationCurve",
+                    "parameterAttachment" : {
+                        "parameter" : "Saturation Curve"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1687",
+                        "y" : "261",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "FilterKeyfollowBase",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter Keytrack Base"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1547",
+                        "y" : "261",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "LinkCutoff",
+                    "button" : {
+                        "isToggle" : "1",
+                        "normalImage" : "0",
+                        "overImage" : "0",
+                        "downImage" : "0",
+                        "normalImageOn" : "1",
+                        "overImageOn" : "1",
+                        "downImageOn" : "1",
+                        "x" : "1090",
+                        "y" : "377",
+                        "width" : "25",
+                        "height" : "50",
+                        "texture" : "chain-btn-25x50",
+                        "tileSizeX" : "25",
+                        "tileSizeY" : "50"
+                    },
+                   		"controllerlinks" : 
+					            [ { "source" : "f1Cutoff", "dest" : "f2Cutoff", "condition" : "LinkCutoff" },
+								  { "source" : "f2Cutoff", "dest" : "f1Cutoff", "condition" : "LinkCutoff" } ]
+                },
+				{
+                    "name" : "LinkEnv",
+                    "button" : {
+                        "isToggle" : "1",
+                        "normalImage" : "0",
+                        "overImage" : "0",
+                        "downImage" : "0",
+                        "normalImageOn" : "1",
+                        "overImageOn" : "1",
+                        "downImageOn" : "1",
+                        "x" : "1940",
+                        "y" : "377",
+                        "width" : "25",
+                        "height" : "50",
+                        "texture" : "chain-btn-25x50",
+                        "tileSizeX" : "25",
+                        "tileSizeY" : "50"
+                    },
+                   		"controllerlinks" : 
+					            [ { "source" : "f1Reso", "dest" : "f2Reso", "condition" : "LinkEnv" },
+								  { "source" : "f1EnvAmt", "dest" : "f2EnvAmt", "condition" : "LinkEnv" }, 
+								  { "source" : "f1Keytrack", "dest" : "f2Keytrack", "condition" : "LinkEnv" },
+								  { "source" : "f1ResVel", "dest" : "f2ResVel", "condition" : "LinkEnv" },
+								  { "source" : "f1EnvVel", "dest" : "f2EnvVel", "condition" : "LinkEnv" },
+								  { "source" : "f2Reso", "dest" : "f1Reso", "condition" : "LinkEnv" },
+								  { "source" : "f2EnvAmt", "dest" : "f1EnvAmt", "condition" : "LinkEnv" },
+								  { "source" : "f2Keytrack", "dest" : "f1Keytrack", "condition" : "LinkEnv" },
+								  { "source" : "f2ResVel", "dest" : "f1ResVel", "condition" : "LinkEnv" },
+								  { "source" : "f2EnvVel", "dest" : "f1EnvVel", "condition" : "LinkEnv" } ]
+                },
+                {
+                    "name" : "Attack",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter Env Attack"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1127",
+                        "y" : "726",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Decay",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter Env Decay"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1301",
+                        "y" : "726",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "SustainLevel",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter Env Sustain"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1475",
+                        "y" : "726",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "SustainTime",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter Env Sustain Time"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1650",
+                        "y" : "726",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Release",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter Env Release"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1826",
+                        "y" : "726",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Attack",
+                    "parameterAttachment" : {
+                        "parameter" : "Amp Env Attack"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1127",
+                        "y" : "958",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Decay",
+                    "parameterAttachment" : {
+                        "parameter" : "Amp Env Decay"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1301",
+                        "y" : "958",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "SustainLevel",
+                    "parameterAttachment" : {
+                        "parameter" : "Amp Env Sustain"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1475",
+                        "y" : "958",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "SustainTime",
+                    "parameterAttachment" : {
+                        "parameter" : "Amp Env Sustain Time"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1650",
+                        "y" : "958",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Release",
+                    "parameterAttachment" : {
+                        "parameter" : "Amp Env Release"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1826",
+                        "y" : "958",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                }
+            ]
+        },
+        {
+            "name" : "page_lfo",
+            "image" : {
+                "x" : "724",
+                "y" : "325",
+                "width" : "1970",
+                "height" : "1125",
+                "texture" : "lfo_page"
+            },
+            "children" : [
+				{
+                    "name" : "LfoShape",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo1 Shape"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "40",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "LfoClock",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo1 Clock"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "40",
+                        "y" : "219",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "LfoMode",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo1 Mode"
+                    },
+                    "button" : {
+                        "isToggle" : "1",
+                        "normalImage" : "0",
+                        "downImage" : "1",
+                        "normalImageOn" : "1",
+                        "downImageOn" : "0",
+                        "x" : "764",
+                        "y" : "203",
+                        "width" : "154",
+                        "height" : "129",
+                        "texture" : "btn3-154x129",
+                        "tileSizeX" : "154",
+                        "tileSizeY" : "129"
+                    }
+                },
+                {
+                    "name" : "LfoEnvMode",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo1 Env Mode"
+                    },
+                    "button" : {
+                        "isToggle" : "1",
+                        "normalImage" : "0",
+                        "downImage" : "1",
+                        "normalImageOn" : "1",
+                        "downImageOn" : "0",
+                        "x" : "916",
+                        "y" : "203",
+                        "width" : "78",
+                        "height" : "129",
+                        "texture" : "btn2-78x129",
+                        "tileSizeX" : "78",
+                        "tileSizeY" : "129"
+                    }
+                },
+                {
+                    "name" : "LfoRate",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo1 Rate"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "184",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "LfoKeytrack",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo1 Keyfollow"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "327",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "LfoContour",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo1 Symmetry"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "184",
+                        "y" : "219",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "LfoPhase",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo1 Keytrigger"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "327",
+                        "y" : "219",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "LfoOsc1Pitch",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc1 Lfo1 Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "470",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "LfoOsc2Pitch",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc2 Lfo1 Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "613",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "LfoFilterGain",
+                    "parameterAttachment" : {
+                        "parameter" : "FiltGain Lfo1 Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "470",
+                        "y" : "219",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "LfoAmount",
+                    "parameterAttachment" : {
+                        "parameter" : "LFO1 Assign Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "613",
+                        "y" : "219",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "LfoPW12",
+                    "parameterAttachment" : {
+                        "parameter" : "PW Lfo1 Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "756",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "LfoReso12",
+                    "parameterAttachment" : {
+                        "parameter" : "Reso Lfo1 Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "899",
+                        "y" : "58",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "LfoAssignDestination",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "802",
+                        "y" : "338",
+                        "width" : "210",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "LFO1 Assign Dest"
+                    }
+                },
+				{
+                    "name" : "Lfo1Link",
+                    "button" : {
+                        "isToggle" : "1",
+                        "normalImage" : "0",
+                        "overImage" : "0",
+                        "downImage" : "0",
+                        "normalImageOn" : "1",
+                        "overImageOn" : "1",
+                        "downImageOn" : "1",
+                        "x" : "550",
+                        "y" : "177",
+                        "width" : "86",
+                        "height" : "25",
+                        "texture" : "chain-btn-86x25",
+                        "tileSizeX" : "86",
+                        "tileSizeY" : "25"
+                    },
+                   		"controllerlinks" : 
+					            [ { "source" : "LfoOsc1Pitch", "dest" : "LfoOsc2Pitch", "condition" : "Lfo1Link" },
+								  { "source" : "LfoOsc2Pitch", "dest" : "LfoOsc1Pitch", "condition" : "Lfo1Link" } ]
+                },
+				{
+                    "name" : "Lfo2Shape",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo2 Shape"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "40",
+                        "y" : "434",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "Lfo2Clock",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo2 Clock"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "40",
+                        "y" : "595",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Lfo2Mode",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo2 Mode"
+                    },
+                    "button" : {
+                        "isToggle" : "1",
+                        "normalImage" : "0",
+                        "downImage" : "1",
+                        "normalImageOn" : "1",
+                        "downImageOn" : "0",
+                        "x" : "764",
+                        "y" : "579",
+                        "width" : "154",
+                        "height" : "129",
+                        "texture" : "btn3-154x129",
+                        "tileSizeX" : "154",
+                        "tileSizeY" : "129"
+                    }
+                },
+                {
+                    "name" : "Lfo2EnvMode",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo2 Env Mode"
+                    },
+                    "button" : {
+                        "isToggle" : "1",
+                        "normalImage" : "0",
+                        "downImage" : "1",
+                        "normalImageOn" : "1",
+                        "downImageOn" : "0",
+                        "x" : "916",
+                        "y" : "579",
+                        "width" : "78",
+                        "height" : "129",
+                        "texture" : "btn2-78x129",
+                        "tileSizeX" : "78",
+                        "tileSizeY" : "129"
+                    }
+                },
+                {
+                    "name" : "Lfo2Rate",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo2 Rate"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "184",
+                        "y" : "434",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Lfo2Keytrack",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo2 Keyfollow"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "327",
+                        "y" : "434",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Lfo2Contour",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo2 Symmetry"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "184",
+                        "y" : "595",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Lfo2Keytrigger",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo2 Keytrigger"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "327",
+                        "y" : "595",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Lfo2Flt1Cutoff",
+                    "parameterAttachment" : {
+                        "parameter" : "Cutoff1 Lfo2 Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "470",
+                        "y" : "434",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Lfo2Flt2Cutoff",
+                    "parameterAttachment" : {
+                        "parameter" : "Cutoff2 Lfo2 Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "613",
+                        "y" : "434",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Lfo2Panning",
+                    "parameterAttachment" : {
+                        "parameter" : "Pan Lfo2 Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "470",
+                        "y" : "595",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Lfo2Amount",
+                    "parameterAttachment" : {
+                        "parameter" : "LFO2 Assign Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "613",
+                        "y" : "595",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Lfo2Shape",
+                    "parameterAttachment" : {
+                        "parameter" : "Shape Lfo2 Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "756",
+                        "y" : "434",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Lfo2FM",
+                    "parameterAttachment" : {
+                        "parameter" : "FM Lfo2 Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "899",
+                        "y" : "434",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Lfo2AssignDestination",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "802",
+                        "y" : "714",
+                        "width" : "210",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "LFO2 Assign Dest"
+                    }
+                },
+				{
+                    "name" : "Lfo2Link",
+                    "button" : {
+                        "isToggle" : "1",
+                        "normalImage" : "0",
+                        "overImage" : "0",
+                        "downImage" : "0",
+                        "normalImageOn" : "1",
+                        "overImageOn" : "1",
+                        "downImageOn" : "1",
+                        "x" : "550",
+                        "y" : "553",
+                        "width" : "86",
+                        "height" : "25",
+                        "texture" : "chain-btn-86x25",
+                        "tileSizeX" : "86",
+                        "tileSizeY" : "25"
+                    },
+                   		"controllerlinks" : 
+					            [ { "source" : "Lfo2Flt1Cutoff", "dest" : "Lfo2Flt2Cutoff", "condition" : "Lfo2Link" },
+								  { "source" : "Lfo2Flt2Cutoff", "dest" : "Lfo2Flt1Cutoff", "condition" : "Lfo2Link" } ]
+                },
+				{
+                    "name" : "Lfo3Shape",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo3 Shape"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "40",
+                        "y" : "809",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "Lfo3Clock",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo3 Clock"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "40",
+                        "y" : "970",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Lfo3Mode",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo3 Mode"
+                    },
+                    "button" : {
+                        "isToggle" : "1",
+                        "normalImage" : "0",
+                        "downImage" : "1",
+                        "normalImageOn" : "1",
+                        "downImageOn" : "0",
+                        "x" : "764",
+                        "y" : "954",
+                        "width" : "154",
+                        "height" : "129",
+                        "texture" : "btn3-154x129",
+                        "tileSizeX" : "154",
+                        "tileSizeY" : "129"
+                    }
+                },
+                {
+                    "name" : "Lfo3Rate",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo3 Rate"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "184",
+                        "y" : "809",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Lfo3FadeIn",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo3 Fade-In Time"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "327",
+                        "y" : "809",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Lfo3Keytrack",
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo3 Keyfollow"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "184",
+                        "y" : "970",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Lfo3Amount",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc Lfo3 Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "613",
+                        "y" : "970",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Lfo3AssignDestination",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "802",
+                        "y" : "1089",
+                        "width" : "210",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Lfo3 Destination"
+                    }
+                },
+                {
+                    "name" : "Mod3Amount",
+                    "parameterAttachment" : {
+                        "parameter" : "Assign1 Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1570",
+                        "y" : "123",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Mod3Source",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1730",
+                        "y" : "58",
+                        "width" : "180",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Assign1 Source"
+                    }
+                },
+                {
+                    "name" : "Mod3Dest",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1730",
+                        "y" : "242",
+                        "width" : "180",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Assign1 Destination"
+                    }
+                },
+                {
+                    "name" : "Mod2Amount",
+                    "parameterAttachment" : {
+                        "parameter" : "Assign2 Amount1"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1107",
+                        "y" : "768",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Mod2Source",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1267",
+                        "y" : "703",
+                        "width" : "180",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Assign2 Source"
+                    }
+                },
+                {
+                    "name" : "Mod2Dest",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1267",
+                        "y" : "887",
+                        "width" : "180",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Assign2 Destination1"
+                    }
+                },
+                {
+                    "name" : "Mod2Amount2",
+                    "parameterAttachment" : {
+                        "parameter" : "Assign2 Amount2"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1107",
+                        "y" : "933",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Mod2Dest2",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1267",
+                        "y" : "1052",
+                        "width" : "180",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Assign2 Destination2"
+                    }
+                },
+                {
+                    "name" : "Mod1Amount",
+                    "parameterAttachment" : {
+                        "parameter" : "Assign3 Amount1"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1107",
+                        "y" : "136",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Mod1Source",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1267",
+                        "y" : "71",
+                        "width" : "180",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Assign3 Source"
+                    }
+                },
+                {
+                    "name" : "Mod1Dest",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1267",
+                        "y" : "255",
+                        "width" : "180",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Assign3 Destination1"
+                    }
+                },
+                {
+                    "name" : "Mod1Amount2",
+                    "parameterAttachment" : {
+                        "parameter" : "Assign3 Amount2"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1107",
+                        "y" : "301",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Mod1Dest2",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1267",
+                        "y" : "420",
+                        "width" : "180",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Assign3 Destination2"
+                    }
+                },
+                {
+                    "name" : "Mod1Amount3",
+                    "parameterAttachment" : {
+                        "parameter" : "Assign3 Amount3"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1107",
+                        "y" : "466",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Mod1Dest3",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1267",
+                        "y" : "585",
+                        "width" : "180",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Assign3 Destination3"
+                    }
+                },
+                {
+                    "name" : "Mod4Amount",
+                    "parameterAttachment" : {
+                        "parameter" : "Assign 4 Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1570",
+                        "y" : "397",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Mod4Source",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1730",
+                        "y" : "332",
+                        "width" : "180",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Assign 4 Source"
+                    }
+                },
+                {
+                    "name" : "Mod4Dest",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1730",
+                        "y" : "516",
+                        "width" : "180",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Assign 4 Destination"
+                    }
+                },
+                {
+                    "name" : "Mod5Amount",
+                    "parameterAttachment" : {
+                        "parameter" : "Assign 5 Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1570",
+                        "y" : "672",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Mod5Source",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1730",
+                        "y" : "607",
+                        "width" : "180",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Assign 5 Source"
+                    }
+                },
+                {
+                    "name" : "Mod5Dest",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1730",
+                        "y" : "791",
+                        "width" : "180",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Assign 5 Destination"
+                    }
+                },
+                {
+                    "name" : "Mod6Amount",
+                    "parameterAttachment" : {
+                        "parameter" : "Assign 6 Amount"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1570",
+                        "y" : "947",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Mod6Source",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1730",
+                        "y" : "882",
+                        "width" : "180",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Assign 6 Source"
+                    }
+                },
+                {
+                    "name" : "Mod6Dest",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1730",
+                        "y" : "1066",
+                        "width" : "180",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Assign 6 Destination"
+                    }
+                }
+            ]
+        },
+        {
+            "name" : "page_fx",
+            "image" : {
+                "x" : "724",
+                "y" : "325",
+                "width" : "1970",
+                "height" : "1125",
+                "texture" : "fx_page"
+            },
+            "children" : [
+				{
+                    "name" : "DistortionType",
+                    "parameterAttachment" : {
+                        "parameter" : "Distortion Curve"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "120",
+                        "y" : "57",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "DistortionAmount",
+                    "parameterAttachment" : {
+                        "parameter" : "Distortion Intensity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "289",
+                        "y" : "57",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "BassIntensity",
+                    "parameterAttachment" : {
+                        "parameter" : "Bass Intensity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "628",
+                        "y" : "57",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "BassTune",
+                    "parameterAttachment" : {
+                        "parameter" : "Bass Tune"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "797",
+                        "y" : "57",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "PhaserStages",
+                    "parameterAttachment" : {
+                        "parameter" : "Phaser Mode"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "29",
+                        "y" : "283",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "PhaserRate",
+                    "parameterAttachment" : {
+                        "parameter" : "Phaser Rate"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "173",
+                        "y" : "283",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "PhaserFreq",
+                    "parameterAttachment" : {
+                        "parameter" : "Phaser Frequency"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "316",
+                        "y" : "283",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "PhaserDepth",
+                    "parameterAttachment" : {
+                        "parameter" : "Phaser Depth"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "459",
+                        "y" : "283",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "PhaserFeedback",
+                    "parameterAttachment" : {
+                        "parameter" : "Phaser Feedback"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "602",
+                        "y" : "283",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "PhaserSpread",
+                    "parameterAttachment" : {
+                        "parameter" : "Phaser Spread"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "745",
+                        "y" : "283",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "PhaserMix",
+                    "parameterAttachment" : {
+                        "parameter" : "Phaser Mix"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "888",
+                        "y" : "283",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "ChorusLfoShape",
+                    "parameterAttachment" : {
+                        "parameter" : "Chorus Lfo Shape"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "29",
+                        "y" : "509",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "ChorusRate",
+                    "parameterAttachment" : {
+                        "parameter" : "Chorus Rate"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "316",
+                        "y" : "509",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "ChorusDepth",
+                    "parameterAttachment" : {
+                        "parameter" : "Chorus Depth"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "459",
+                        "y" : "509",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "ChorusFeedback",
+                    "parameterAttachment" : {
+                        "parameter" : "Chorus Feedback"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "602",
+                        "y" : "509",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "ChorusDelay",
+                    "parameterAttachment" : {
+                        "parameter" : "Chorus Delay"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "745",
+                        "y" : "509",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "ChorusMix",
+                    "parameterAttachment" : {
+                        "parameter" : "Chorus Mix"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "888",
+                        "y" : "509",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Gain",
+                    "parameterAttachment" : {
+                        "parameter" : "LowEQ Gain"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "29",
+                        "y" : "735",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Freq",
+                    "parameterAttachment" : {
+                        "parameter" : "LowEQ Frequency"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "173",
+                        "y" : "735",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Gain",
+                    "parameterAttachment" : {
+                        "parameter" : "MidEQ Gain"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "316",
+                        "y" : "735",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Freq",
+                    "parameterAttachment" : {
+                        "parameter" : "MidEQ Frequency"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "459",
+                        "y" : "735",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Q",
+                    "parameterAttachment" : {
+                        "parameter" : "MidEQ Q-Factor"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "602",
+                        "y" : "735",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Gain",
+                    "parameterAttachment" : {
+                        "parameter" : "HighEQ Gain"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "745",
+                        "y" : "735",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Freq",
+                    "parameterAttachment" : {
+                        "parameter" : "HighEQ Frequency"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "888",
+                        "y" : "735",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "InputFollowerMode",
+                    "parameterAttachment" : {
+                        "parameter" : "Input Follower Mode"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "29",
+                        "y" : "960",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "InputFollowerGain",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter Env Sustain"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "173",
+                        "y" : "960",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "InputFollowerAttack",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter Env Attack"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "316",
+                        "y" : "960",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "InputFollowerRelease",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter Env Release"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "459",
+                        "y" : "960",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "PunchIntensity",
+                    "parameterAttachment" : {
+                        "parameter" : "Punch Intensity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "752",
+                        "y" : "960",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "ContainerReverb",
+                    "image" : {
+                        "x" : "1016",
+                        "y" : "0",
+                        "width" : "954",
+                        "height" : "448",
+                        "texture" : "fx_reverb_overlay"
+                    },
+                    "children" : [
+                        {
+                            "name" : "ReverbDecay",
+                            "parameterAttachment" : {
+                                "parameter" : "Dly Rate / Rev Decay"
+                            },
+                            "rotary" : {
+                            },
+                            "spritesheet" : {
+                                "x" : "197",
+                                "y" : "57",
+                                "width" : "104",
+                                "height" : "104",
+                                "texture" : "knob_2-104x104",
+                                "tileSizeX" : "104",
+                                "tileSizeY" : "104"
+                            }
+                        },
+                        {
+                            "name" : "ReverbDamping",
+                            "parameterAttachment" : {
+                                "parameter" : "Reverb Damping"
+                            },
+                            "rotary" : {
+                            },
+                            "spritesheet" : {
+                                "x" : "350",
+                                "y" : "57",
+                                "width" : "104",
+                                "height" : "104",
+                                "texture" : "knob_2-104x104",
+                                "tileSizeX" : "104",
+                                "tileSizeY" : "104"
+                            }
+                        },
+                        {
+                            "name" : "ReverbColor",
+                            "parameterAttachment" : {
+                                "parameter" : "Delay Color"
+                            },
+                            "rotary" : {
+                            },
+                            "spritesheet" : {
+                                "x" : "503",
+                                "y" : "57",
+                                "width" : "104",
+                                "height" : "104",
+                                "texture" : "knob_2-104x104",
+                                "tileSizeX" : "104",
+                                "tileSizeY" : "104"
+                            }
+                        },
+                        {
+                            "name" : "ReverbPreDelay",
+                            "parameterAttachment" : {
+                                "parameter" : "Delay Time"
+                            },
+                            "rotary" : {
+                            },
+                            "spritesheet" : {
+                                "x" : "656",
+                                "y" : "57",
+                                "width" : "104",
+                                "height" : "104",
+                                "texture" : "knob_2-104x104",
+                                "tileSizeX" : "104",
+                                "tileSizeY" : "104"
+                            }
+                        },
+                        {
+                            "name" : "ReverbFeedback",
+                            "parameterAttachment" : {
+                                "parameter" : "Delay Feedback"
+                            },
+                            "rotary" : {
+                            },
+                            "spritesheet" : {
+                                "x" : "809",
+                                "y" : "57",
+                                "width" : "104",
+                                "height" : "104",
+                                "texture" : "knob_2-104x104",
+                                "tileSizeX" : "104",
+                                "tileSizeY" : "104"
+           }
+                        },
+						{
+                            "name" : "ReverbSize",
+                            "parameterAttachment" : {
+                                "parameter" : "Rev Size"
+                            },
+                            "rotary" : {
+                            },
+                            "spritesheet" : {
+                                "x" : "350",
+                                "y" : "283",
+                                "width" : "104",
+                                "height" : "104",
+                                "texture" : "knob_2-104x104",
+                                "tileSizeX" : "104",
+                                "tileSizeY" : "104"
+           }
+                        }
+                    ]
+                },
+                {
+                    "name" : "ContainerDelay",
+                    "component" : {
+                        "x" : "1016",
+                        "y" : "0",
+                        "width" : "954",
+                        "height" : "448"
+                    },
+                    "children" : [
+                        {
+                            "name" : "DelayTime",
+                            "parameterAttachment" : {
+                                "parameter" : "Delay Time"
+                            },
+                            "rotary" : {
+                            },
+                            "spritesheet" : {
+                                "x" : "197",
+                                "y" : "57",
+                                "width" : "104",
+                                "height" : "104",
+                                "texture" : "knob_2-104x104",
+                                "tileSizeX" : "104",
+                                "tileSizeY" : "104"
+                            }
+                        },
+                        {
+                            "name" : "DelayFeedback",
+                            "parameterAttachment" : {
+                                "parameter" : "Delay Feedback"
+                            },
+                            "rotary" : {
+                            },
+                            "spritesheet" : {
+                                "x" : "350",
+                                "y" : "57",
+                                "width" : "104",
+                                "height" : "104",
+                                "texture" : "knob_2-104x104",
+                                "tileSizeX" : "104",
+                                "tileSizeY" : "104"
+                            }
+                        },
+                        {
+                            "name" : "DelayColor",
+                            "parameterAttachment" : {
+                                "parameter" : "Delay Color"
+                            },
+                            "rotary" : {
+                            },
+                            "spritesheet" : {
+                                "x" : "503",
+                                "y" : "57",
+                                "width" : "104",
+                                "height" : "104",
+                                "texture" : "knob_2-104x104",
+                                "tileSizeX" : "104",
+                                "tileSizeY" : "104"
+                            }
+                        },
+                        {
+                            "name" : "DelayRate",
+                            "parameterAttachment" : {
+                                "parameter" : "Dly Rate / Rev Decay"
+                            },
+                            "rotary" : {
+                            },
+                            "spritesheet" : {
+                                "x" : "656",
+                                "y" : "57",
+                                "width" : "104",
+                                "height" : "104",
+                                "texture" : "knob_2-104x104",
+                                "tileSizeX" : "104",
+                                "tileSizeY" : "104"
+                            }
+                        },
+                        {
+                            "name" : "DelayDepth",
+                            "parameterAttachment" : {
+                                "parameter" : "Dly Depth "
+                            },
+                            "rotary" : {
+                            },
+                            "spritesheet" : {
+                                "x" : "809",
+                                "y" : "57",
+                                "width" : "104",
+                                "height" : "104",
+                                "texture" : "knob_2-104x104",
+                                "tileSizeX" : "104",
+                                "tileSizeY" : "104"
+                            }
+                        },
+						{
+                            "name" : "DelayReverbLfoShape",
+                            "parameterAttachment" : {
+                                "parameter" : "Delay Lfo Shape"
+                            },
+                            "rotary" : {
+                            },
+                            "spritesheet" : {
+                                "x" : "350",
+                                "y" : "283",
+                                "width" : "104",
+                                "height" : "104",
+                                "texture" : "knob_2-104x104",
+                                "tileSizeX" : "104",
+                                "tileSizeY" : "104"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name" : "DelayReverbMode",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFE0",
+						"fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "1072",
+                        "y" : "206",
+                        "width" : "250",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Delay/Reverb Mode"
+                    }
+                },
+				{
+                    "name" : "DelayReverbModeButton",
+                    "parameterAttachment" : {
+                        "parameter" : "Delay/Reverb Mode"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1060",
+                        "y" : "57",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "DelayReverbClock",
+                    "parameterAttachment" : {
+                        "parameter" : "Delay Clock"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1213",
+                        "y" : "283",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "DelayReverbMix",
+                    "parameterAttachment" : {
+                        "parameter" : "Effect Send"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1672",
+                        "y" : "283",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "VocoderMode",
+                    "parameterAttachment" : {
+                        "parameter" : "Vocoder Mode"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1060",
+                        "y" : "509",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VocSourceBalance",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter Balance"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1213",
+                        "y" : "509",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VocSpectralBalance",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter Env Sustain Time"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1366",
+                        "y" : "509",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VocBands",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter Env Release"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1519",
+                        "y" : "509",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VocAttack",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter Env Attack"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1672",
+                        "y" : "509",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VocRelease",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter Env Decay"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1825",
+                        "y" : "509",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VocCarrierCenterFreq",
+                    "parameterAttachment" : {
+                        "parameter" : "Cutoff"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1366",
+                        "y" : "735",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VocCarrierQFactor",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter1 Resonance"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1519",
+                        "y" : "735",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VocCarrierSpread",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter1 Keyfollow"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1672",
+                        "y" : "735",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VocModulatorFreqOffset",
+                    "parameterAttachment" : {
+                        "parameter" : "Cutoff2"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1366",
+                        "y" : "960",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VocModulatorQFactor",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter2 Resonance"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1519",
+                        "y" : "960",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VocModulatorSpread",
+                    "parameterAttachment" : {
+                        "parameter" : "Filter2 Keyfollow"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1672",
+                        "y" : "960",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "LinkVoc",
+                    "button" : {
+                        "isToggle" : "1",
+                        "normalImage" : "0",
+                        "overImage" : "0",
+                        "downImage" : "0",
+                        "normalImageOn" : "1",
+                        "overImageOn" : "1",
+                        "downImageOn" : "1",
+                        "x" : "1789",
+                        "y" : "954",
+                        "width" : "25",
+                        "height" : "50",
+                        "texture" : "chain-btn-25x50",
+                        "tileSizeX" : "25",
+                        "tileSizeY" : "50"
+                    },
+                    "controllerlinks" : 
+					            [ { "source" : "VocCarrierCenterFreq", "dest" : "VocModulatorFreqOffset", "condition" : "LinkVoc" },
+								  { "source" : "VocCarrierQFactor", "dest" : "VocModulatorQFactor", "condition" : "LinkVoc" }, 
+								  { "source" : "VocCarrierSpread", "dest" : "VocModulatorSpread", "condition" : "LinkVoc" },
+								  { "source" : "VocModulatorFreqOffset", "dest" : "VocCarrierCenterFreq", "condition" : "LinkVoc" },
+								  { "source" : "VocModulatorQFactor", "dest" : "VocCarrierQFactor", "condition" : "LinkVoc" },
+								  { "source" : "VocModulatorSpread", "dest" : "VocCarrierSpread", "condition" : "LinkVoc" }]
+                },
+				{
+                    "name" : "VocModulatorInput",
+                    "parameterAttachment" : {
+                        "parameter" : "Input Select"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1213",
+                        "y" : "960",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                }
+            ]
+        },
+        {
+            "name" : "page_arp",
+            "image" : {
+                "x" : "724",
+                "y" : "325",
+                "width" : "1970",
+                "height" : "1125",
+                "texture" : "arp_page"
+            },
+            "children" : [
+                {
+                    "name" : "VelOsc1Shape",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc1 Shape Velocity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "58",
+                        "y" : "72",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VelFlt1Freq",
+                    "parameterAttachment" : {
+                        "parameter" : "Flt1 EnvAmt Velocity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "201",
+                        "y" : "72",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VelFlt1Res",
+                    "parameterAttachment" : {
+                        "parameter" : "Resonance1 Velocity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "344",
+                        "y" : "72",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VelPW",
+                    "parameterAttachment" : {
+                        "parameter" : "PulseWidth Velocity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "487",
+                        "y" : "72",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VelVol",
+                    "parameterAttachment" : {
+                        "parameter" : "Amp Velocity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "630",
+                        "y" : "72",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VelPan",
+                    "parameterAttachment" : {
+                        "parameter" : "Panorama Velocity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "773",
+                        "y" : "72",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VelOsc2Shape",
+                    "parameterAttachment" : {
+                        "parameter" : "Osc2 Shape Velocity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "58",
+                        "y" : "246",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VelFlt2Freq",
+                    "parameterAttachment" : {
+                        "parameter" : "Flt2 EnvAmt Velocity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "201",
+                        "y" : "246",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VelFlt2Res",
+                    "parameterAttachment" : {
+                        "parameter" : "Resonance2 Velocity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "344",
+                        "y" : "246",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "VelFM",
+                    "parameterAttachment" : {
+                        "parameter" : "Fm Amount Velocity"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "487",
+                        "y" : "246",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "InputMode",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFD4",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "70",
+                        "y" : "838",
+                        "width" : "130",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Input Mode"
+                    }
+                },
+                {
+                    "name" : "InputSelect",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFD4",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "250",
+                        "y" : "838",
+                        "width" : "130",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Input Select"
+                    }
+                },
+                {
+                    "name" : "ArpGlobalTempo",
+                    "parameterAttachment" : {
+                        "parameter" : "Clock Tempo"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1028",
+                        "y" : "246",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "ArpNoteLength",
+                    "parameterAttachment" : {
+                        "parameter" : "Arp Note Length"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1222",
+                        "y" : "246",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "ArpNoteSwing",
+                    "parameterAttachment" : {
+                        "parameter" : "Arp Swing"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1416",
+                        "y" : "246",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "ArpModeButton",
+                    "parameterAttachment" : {
+                        "parameter" : "Arp Mode"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1028",
+                        "y" : "72",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "ArpPattern",
+                    "parameterAttachment" : {
+                        "parameter" : "Arp Pattern Selct"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1222",
+                        "y" : "72",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "ArpOctaveRange",
+                    "parameterAttachment" : {
+                        "parameter" : "Arp Octave Range"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1416",
+                        "y" : "72",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "ArpResolution",
+                    "parameterAttachment" : {
+                        "parameter" : "Arp Clock"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1609",
+                        "y" : "72",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "ArpHold",
+                    "parameterAttachment" : {
+                        "parameter" : "Arp Hold Enable"
+                    },
+                    "button" : {
+                        "isToggle" : "1",
+                        "normalImage" : "1",
+                        "downImage" : "0",
+                        "normalImageOn" : "0",
+                        "downImageOn" : "1",
+                        "x" : "1837",
+                        "y" : "55",
+                        "width" : "78",
+                        "height" : "129",
+                        "texture" : "btn1-78x129",
+                        "tileSizeX" : "78",
+                        "tileSizeY" : "129"
+                    }
+                },
+                {
+                    "name" : "SoftKnobMode",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFD4",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "290",
+                        "y" : "504",
+                        "width" : "110",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Soft Knob-1 Mode"
+                    }
+                },
+                {
+                    "name" : "SoftKnobName",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFD4",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "600",
+                        "y" : "504",
+                        "width" : "200",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Soft Knob1 ShortName"
+                    }
+                },
+                {
+                    "name" : "SoftKnobMode",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFD4",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "290",
+                        "y" : "577",
+                        "width" : "110",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Soft Knob-2 Mode"
+                    }
+                },
+                {
+                    "name" : "SoftKnobName",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFD4",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "600",
+                        "y" : "577",
+                        "width" : "200",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Soft Knob2 ShortName"
+                    }
+                },
+				{
+                    "name" : "KeyMode",
+                    "parameterAttachment" : {
+                        "parameter" : "Key Mode"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "979",
+                        "y" : "513",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "PatchVolume",
+                    "parameterAttachment" : {
+                        "parameter" : "Patch Volume"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1122",
+                        "y" : "513",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Panning",
+                    "parameterAttachment" : {
+                        "parameter" : "Panorama"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1265",
+                        "y" : "513",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "SecondaryOutput",
+                    "parameterAttachment" : {
+                        "parameter" : "Part Output Select"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "979",
+                        "y" : "688",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "SecondaryOutput2",
+                    "combobox" : {
+                        "text" : "Wave 42",
+                        "fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFD4",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "976",
+                        "y" : "839",
+                        "width" : "120",
+                        "height" : "26"
+                    },
+                    "parameterAttachment" : {
+                        "parameter" : "Part Output Select"
+                    }
+                },
+                {
+                    "name" : "OutputBalance",
+                    "parameterAttachment" : {
+                        "parameter" : "Second Output Balance"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1122",
+                        "y" : "688",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "Transpose",
+                    "parameterAttachment" : {
+                        "parameter" : "Transpose"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1265",
+                        "y" : "688",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "BendUp",
+                    "parameterAttachment" : {
+                        "parameter" : "Bender Range Up"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1534",
+                        "y" : "513",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "BendDown",
+                    "parameterAttachment" : {
+                        "parameter" : "Bender Range Down"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1534",
+                        "y" : "688",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "BendScale",
+                    "parameterAttachment" : {
+                        "parameter" : "Bender Scale"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1677",
+                        "y" : "513",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "SmoothMode",
+                    "parameterAttachment" : {
+                        "parameter" : "Control Smooth Mode"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1677",
+                        "y" : "688",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "Category1",
+                    "parameterAttachment" : {
+                        "parameter" : "Category1"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1820",
+                        "y" : "513",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+				{
+                    "name" : "Category2",
+                    "parameterAttachment" : {
+                        "parameter" : "Category2"
+                    },
+                    "rotary" : {
+                    },
+                    "spritesheet" : {
+                        "x" : "1820",
+                        "y" : "688",
+                        "width" : "104",
+                        "height" : "104",
+                        "texture" : "knob_2-104x104",
+                        "tileSizeX" : "104",
+                        "tileSizeY" : "104"
+                    }
+                },
+                {
+                    "name" : "MidiIn",
+                    "combobox" : {
+                        "text" : "In Device X",
+                        "fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFD4",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "500",
+                        "y" : "838",
+                        "width" : "166",
+                        "height" : "26"
+                    }
+                },
+                {
+                    "name" : "MidiOut",
+                    "combobox" : {
+                        "text" : "Out Device X",
+                        "fontFile" : "Prototype",
+                        "fontName" : "Prototype",
+                        "textHeight" : "24",
+                        "color" : "FFFFFFD4",
+                        "alignH" : "L",
+                        "alignV" : "C",
+                        "x" : "700",
+                        "y" : "838",
+                        "width" : "166",
+                        "height" : "26"
+                    }
+                }
+            ]
+        },
+        {
+            "name" : "page_presets",
+            "image" : {
+                "x" : "724",
+                "y" : "325",
+                "width" : "1970",
+                "height" : "1125",
+                "texture" : "presets_page"
+            },
+            "children" : [
+                {
+                "name" : "ContainerPatchManager",
+                "component" : {
+                "x" : "16",
+                "y" : "39",
+                "width" : "1938",
+                "height" : "1070"
+                    }
+                },
+            ]
+        },
+        {
+            "name" : "DonateInfo",
+            "hyperlinkbutton" : {
+                "url" : "",
+                "text" : "",
+                "textHeight" : "26",
+                "color" : "FF952BE3",
+                "fontFile" : "Digital",
+                "fontName" : "Digital",
+                "x" : "140",
+                "y" : "1475",
+                "width" : "533",
+                "height" : "45"
+            }
+        },
+        {
+            "name" : "VersionInfo",
+            "label" : {
+                "text" : "DSP56300 Emulator Version 0.8.15 - March 12 2042 12:34:56",
+                "textHeight" : "18",
+                "color" : "9ca1ab",
+                "alignH" : "L",
+                "alignV" : "C",
+                "fontFile" : "Prototype",
+                "fontName" : "Prototype",
+                "x" : "2310",
+                "y" : "1480",
+                "width" : "580",
+                "height" : "30"
+            }
+        }
+    ]
+}

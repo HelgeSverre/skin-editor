@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orius Skin Editor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/json5/2.2.2/index.min.js"></script>
+</head>
+<body class="bg-gray-100">
+<div id="app" class="flex h-screen">
+    <div id="sidebar" class="w-64 bg-gray-800 p-4 text-white">
+        <h2 class="mb-4 text-xl font-bold">Available Skins</h2>
+        <div id="skinList"></div>
+    </div>
+    <div id="mainContent" class="flex-1 overflow-hidden">
+        <div id="skinContainer" class="relative"></div>
+    </div>
+</div>
+
+<script>
+    const baseUrl = "https://raw.githubusercontent.com/dsp56300/gearmulator/main/source/osirusJucePlugin/skins";
+    const availableSkins = [
+        {name: "Galaxpel", url: `${baseUrl}/Galaxpel/VirusC_Galaxpel.json`},
+        {name: "Trancy", url: `${baseUrl}/Trancy/VirusC_Trancy.json`},
+        {name: "Hoverland", url: `${baseUrl}/Hoverland/VirusC_Hoverland.json`},
+    ];
+
+    let currentSkin = null;
+    let scale = 1;
+    let activeTab = "";
+
+    function createSkinList() {
+        const skinList = document.getElementById('skinList');
+        availableSkins.forEach(skin => {
+            const button = document.createElement('button');
+            button.textContent = skin.name;
+            button.className = 'block w-full text-left p-2 hover:bg-gray-700';
+            button.onclick = () => loadSkin(skin);
+            skinList.appendChild(button);
+        });
+    }
+
+    async function loadSkin(skin) {
+        try {
+            const response = await fetch(skin.url);
+            const text = await response.text();
+            currentSkin = JSON5.parse(text);
+            scale = currentSkin.root.scale || 1;
+            activeTab = currentSkin.tabgroup?.pages[0] || "";
+            renderSkin();
+        } catch (error) {
+            console.error("Error loading skin:", error);
+        }
+    }
+
+    function renderSkin() {
+        const container = document.getElementById('skinContainer');
+        container.innerHTML = '';
+        container.style.width = `${currentSkin.root.width * scale}px`;
+        container.style.height = `${currentSkin.root.height * scale}px`;
+
+        // Render background
+        const bg = document.createElement('img');
+        bg.src = `${baseUrl}/${currentSkin.name}/${currentSkin.children[0].image.texture}.png`;
+        bg.className = 'absolute w-full h-full';
+        container.appendChild(bg);
+
+        // Render other elements
+        currentSkin.children.forEach(element => {
+            const el = renderElement(element);
+            if (el) container.appendChild(el);
+        });
+    }
+
+    function renderElement(element) {
+        if (element.image) {
+            return renderImage(element);
+        } else if (element.label) {
+            return renderLabel(element);
+        } else if (element.button) {
+            return renderButton(element);
+        } else if (element.rotary) {
+            return renderRotary(element);
+        } else if (element.combobox) {
+            return renderCombobox(element);
+        } else if (element.children) {
+            return renderContainer(element);
+        }
+        return null;
+    }
+
+    function renderImage(element) {
+        const img = document.createElement('img');
+        img.src = `${baseUrl}/${currentSkin.name}/${element.image.texture}.png`;
+        img.className = 'absolute';
+        setElementStyle(img, element);
+        return img;
+    }
+
+    function renderLabel(element) {
+        const label = document.createElement('div');
+        label.textContent = element.label.text || '';
+        label.className = 'absolute flex items-center';
+        setElementStyle(label, element);
+        setLabelStyle(label, element.label);
+        return label;
+    }
+
+    function renderButton(element) {
+        const button = document.createElement('button');
+        button.textContent = element.name;
+        button.className = 'absolute';
+        setElementStyle(button, element);
+        setButtonStyle(button, element.button);
+        if (element.name.startsWith('Tab')) {
+            button.onclick = () => handleTabClick(element.name);
+        }
+        return button;
+    }
+
+    function renderRotary(element) {
+        const rotary = document.createElement('div');
+        rotary.textContent = element.name;
+        rotary.className = 'absolute border border-red-500';
+        setElementStyle(rotary, element);
+        return rotary;
+    }
+
+    function renderCombobox(element) {
+        const combobox = document.createElement('div');
+        combobox.textContent = element.name;
+        combobox.className = 'absolute border border-red-500';
+        setElementStyle(combobox, element);
+        return combobox;
+    }
+
+    function renderContainer(element) {
+        const container = document.createElement('div');
+        container.className = 'absolute';
+        setElementStyle(container, element);
+        element.children.forEach(child => {
+            const childElement = renderElement(child);
+            if (childElement) container.appendChild(childElement);
+        });
+        return container;
+    }
+
+    function setElementStyle(el, element) {
+        el.style.left = `${element.x * scale}px`;
+        el.style.top = `${element.y * scale}px`;
+        el.style.width = `${element.width * scale}px`;
+        el.style.height = `${element.height * scale}px`;
+    }
+
+    function setLabelStyle(el, labelProps) {
+        el.style.justifyContent = labelProps.alignH === "R" ? "flex-end" : labelProps.alignH === "C" ? "center" : "flex-start";
+        el.style.fontFamily = `${labelProps.fontFile}, sans-serif`;
+        el.style.fontSize = `${labelProps.textHeight * scale}px`;
+        el.style.color = labelProps.color || '#000000';
+        if (labelProps.backgroundColor) {
+            el.style.backgroundColor = `#${labelProps.backgroundColor.slice(0, 6)}`;
+        }
+    }
+
+    function setButtonStyle(el, buttonProps) {
+        el.style.backgroundImage = `url("${baseUrl}/${currentSkin.name}/${buttonProps.texture}.png")`;
+        el.style.backgroundPosition = activeTab === el.textContent.replace('Tab', 'page_').toLowerCase() ? '0 0' : '0 100%';
+    }
+
+    function handleTabClick(tabName) {
+        activeTab = tabName.replace('Tab', 'page_').toLowerCase();
+        renderSkin();
+    }
+
+    // Initialize the application
+    createSkinList();
+    loadSkin(availableSkins[1]);
+    console.log("loaded")
+</script>
+</body>
+</html>
