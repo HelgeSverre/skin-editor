@@ -58,6 +58,15 @@
     // Vavra — Waldorf microQ
     local("Vavra", "vavra", "mqDefault", "mqDefault.json"),
     local("Vavra", "vavra", "mqFrontPanel", "mqFrontPanel.json"),
+    community("Vavra", "FundorinGrey", "mqDefault.json"),
+    community("Vavra", "FundorinPanel", "mqFrontPanel.json"),
+    community("Vavra", "FundorinTeal", "mqDefault.json"),
+    community("Vavra", "mQ_Fried", "mQ_Fried_Full.json"),
+    community("Vavra", "mqYellowEdit", "mqYellowEdit.json"),
+    community("Vavra", "Red", "Red.json"),
+    community("Vavra", "VavraDeepPurple", "Vavra E+D Deep Purple.json"),
+    community("Vavra", "Vavra98", "Vavra98.json"),
+    community("Vavra", "VavraWhiteout", "VavraWhiteoutV3.0.json"),
     // Xenia — Waldorf Microwave II/XT
     local("Xenia", "xenia", "xtDefault", "xtDefault.json"),
     // Nodal Red 2x — Clavia Nord Lead/Rack 2x
