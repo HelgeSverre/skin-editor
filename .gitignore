@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.vercel
+
+# Skin assets (large binary files)
+skins-repo/
+skins/

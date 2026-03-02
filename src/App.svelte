@@ -21,8 +21,6 @@
   import ErrorBanner from "./ui/ErrorBanner.svelte";
   import Tooltip from "./ui/Tooltip.svelte";
 
-  const ghBase = "https://raw.githubusercontent.com/dsp56300/gearmulator/main/source";
-
   interface SkinEntry {
     name: string;
     url: string;
@@ -31,25 +29,25 @@
     emulator: string;
   }
 
-  function entry(emulator: string, plugin: string, folder: string, json: string): SkinEntry {
-    const baseUrl = `${ghBase}/${plugin}/skins`;
+  function local(emulator: string, dir: string, folder: string, json: string): SkinEntry {
+    const baseUrl = `/skins-repo/${dir}`;
     return { name: folder, url: `${baseUrl}/${folder}/${json}`, baseUrl, folder, emulator };
   }
 
   const availableSkins: SkinEntry[] = [
     // Osirus — Access Virus A/B/C
-    entry("Osirus", "osirusJucePlugin", "Galaxpel", "VirusC_Galaxpel.json"),
-    entry("Osirus", "osirusJucePlugin", "Trancy", "VirusC_Trancy.json"),
-    entry("Osirus", "osirusJucePlugin", "Hoverland", "VirusC_Hoverland.json"),
+    local("Osirus", "osirus", "Galaxpel", "VirusC_Galaxpel.json"),
+    local("Osirus", "osirus", "Trancy", "VirusC_Trancy.json"),
+    local("Osirus", "osirus", "Hoverland", "VirusC_Hoverland.json"),
     // OsTIrus — Access Virus TI/TI2/Snow
-    entry("OsTIrus", "osTIrusJucePlugin", "TrancyTI", "VirusTI_Trancy.json"),
+    local("OsTIrus", "ostirus", "TrancyTI", "VirusTI_Trancy.json"),
     // Vavra — Waldorf microQ
-    entry("Vavra", "mqJucePlugin", "mqDefault", "mqDefault.json"),
-    entry("Vavra", "mqJucePlugin", "mqFrontPanel", "mqFrontPanel.json"),
+    local("Vavra", "vavra", "mqDefault", "mqDefault.json"),
+    local("Vavra", "vavra", "mqFrontPanel", "mqFrontPanel.json"),
     // Xenia — Waldorf Microwave II/XT
-    entry("Xenia", "xtJucePlugin", "xtDefault", "xtDefault.json"),
+    local("Xenia", "xenia", "xtDefault", "xtDefault.json"),
     // Nodal Red 2x — Clavia Nord Lead/Rack 2x
-    entry("Nodal Red 2x", "nord/n2x/n2xJucePlugin", "n2xTrancy", "n2xTrancy.json"),
+    local("Nodal Red 2x", "nodal-red-2x", "n2xTrancy", "n2xTrancy.json"),
   ];
 
   let skin: SkinDefinition | null = $state(null);
