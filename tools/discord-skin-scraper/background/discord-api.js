@@ -55,8 +55,22 @@ export class DiscordAPI {
     let url = `${BASE_URL}/channels/${channelId}/threads/archived/public?limit=100`;
     if (before) url += `&before=${before}`;
     const resp = await this.rateLimiter.request(url, { headers: this._headers() });
-    if (!resp.ok) throw new Error(`Failed to fetch archived threads: ${resp.status}`);
+    if (!resp.ok) throw new Error(`Failed to fetch archived public threads: ${resp.status}`);
     return resp.json(); // { threads: [], has_more: bool }
+  }
+
+  async getArchivedPrivateThreads(channelId, before = null) {
+    let url = `${BASE_URL}/channels/${channelId}/threads/archived/private?limit=100`;
+    if (before) url += `&before=${before}`;
+    const resp = await this.rateLimiter.request(url, { headers: this._headers() });
+    if (!resp.ok) {
+      if (resp.status === 403) {
+        // No permission to list private threads — skip silently
+        return { threads: [], has_more: false };
+      }
+      throw new Error(`Failed to fetch archived private threads: ${resp.status}`);
+    }
+    return resp.json();
   }
 
   // Core pagination: async generator yielding batches of 100 messages
@@ -96,36 +110,61 @@ export class DiscordAPI {
     }
   }
 
-  // Get all threads for a channel (active + archived)
+  // Get all threads for a channel (active + archived public + archived private)
   async getAllThreads(channelId, guildId) {
     const threads = [];
+    const seenIds = new Set();
+
+    const addThreads = (newThreads) => {
+      for (const t of newThreads) {
+        if (!seenIds.has(t.id)) {
+          seenIds.add(t.id);
+          threads.push(t);
+        }
+      }
+    };
 
     // Active threads (guild-wide, filter by parent)
     try {
       const active = await this.getActiveThreads(guildId);
-      threads.push(...active.filter(t => t.parent_id === channelId));
+      addThreads(active.filter(t => t.parent_id === channelId));
     } catch (e) {
       console.warn(`[DiscordAPI] Failed to fetch active threads: ${e.message}`);
     }
 
     // Archived public threads (paginated)
+    // Note: `before` parameter must be an ISO 8601 timestamp, NOT a snowflake ID
+    await this._fetchArchivedThreads(channelId, 'public', addThreads);
+
+    // Archived private threads the user has joined (paginated)
+    await this._fetchArchivedThreads(channelId, 'private', addThreads);
+
+    return threads;
+  }
+
+  async _fetchArchivedThreads(channelId, type, addThreads) {
+    const fetchFn = type === 'private'
+      ? (before) => this.getArchivedPrivateThreads(channelId, before)
+      : (before) => this.getArchivedPublicThreads(channelId, before);
+
     let hasMore = true;
     let before = null;
     while (hasMore) {
       try {
-        const result = await this.getArchivedPublicThreads(channelId, before);
+        const result = await fetchFn(before);
         if (result.threads?.length > 0) {
-          threads.push(...result.threads);
-          before = result.threads[result.threads.length - 1].id;
+          addThreads(result.threads);
+          // Discord API expects ISO 8601 timestamp for the `before` cursor,
+          // not a snowflake ID. Use the archive_timestamp from thread metadata.
+          const lastThread = result.threads[result.threads.length - 1];
+          before = lastThread.thread_metadata?.archive_timestamp || null;
         }
         hasMore = result.has_more === true;
         if (!result.threads?.length) hasMore = false;
       } catch (e) {
-        console.warn(`[DiscordAPI] Failed to fetch archived threads: ${e.message}`);
+        console.warn(`[DiscordAPI] Failed to fetch archived ${type} threads: ${e.message}`);
         hasMore = false;
       }
     }
-
-    return threads;
   }
 }

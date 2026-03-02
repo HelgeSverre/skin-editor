@@ -7,6 +7,20 @@ const SKIN_EXTENSIONS = new Set([
   '.ttf', '.otf', '.woff',
 ]);
 
+// Pattern to extract URLs from message content that point to downloadable files
+const URL_PATTERN = /https?:\/\/[^\s<>"]+/gi;
+
+// Known file hosting domains where URLs likely contain downloadable skin files
+const FILE_HOSTING_DOMAINS = [
+  'cdn.discordapp.com',
+  'media.discordapp.net',
+  'drive.google.com',
+  'mega.nz', 'mega.co.nz',
+  'dropbox.com', 'dl.dropboxusercontent.com',
+  'mediafire.com',
+  'github.com', 'raw.githubusercontent.com',
+];
+
 export class AttachmentCollector {
   constructor(api) {
     this.api = api;
@@ -24,9 +38,57 @@ export class AttachmentCollector {
     return name.replace(/[<>:"/\\|?*]/g, '_').trim() || 'unnamed';
   }
 
+  _filenameFromUrl(url) {
+    try {
+      const pathname = new URL(url).pathname;
+      const segments = pathname.split('/');
+      const last = segments[segments.length - 1];
+      return last ? decodeURIComponent(last) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  _extractLinkedFiles(content, enabledExtensions) {
+    if (!content) return [];
+    const matches = content.match(URL_PATTERN);
+    if (!matches) return [];
+
+    const files = [];
+    for (const rawUrl of matches) {
+      // Clean trailing punctuation that might be part of the sentence
+      const url = rawUrl.replace(/[).,;:!?]+$/, '');
+
+      // Check if the URL points to a file with a matching extension
+      const filename = this._filenameFromUrl(url);
+      if (filename && this._matchesFilter(filename, enabledExtensions)) {
+        files.push({ url, filename });
+        continue;
+      }
+
+      // Check if it's a known file hosting service (capture as a link even without extension)
+      try {
+        const hostname = new URL(url).hostname;
+        const isFileHost = FILE_HOSTING_DOMAINS.some(
+          d => hostname === d || hostname.endsWith('.' + d)
+        );
+        if (isFileHost && filename && filename !== '') {
+          // Only include CDN links with matching extensions (already handled above)
+          // For hosting services like Google Drive/Mega, include as-is
+          if (!hostname.includes('cdn.discordapp') && !hostname.includes('media.discordapp')) {
+            files.push({ url, filename: `link_${hostname.replace(/\./g, '_')}`, isLink: true });
+          }
+        }
+      } catch {
+        // Invalid URL — skip
+      }
+    }
+    return files;
+  }
+
   async collectFromChannel(channelId, channelName, enabledExtensions, onProgress) {
     const attachments = [];
-    const seen = new Set(); // for dedup: "filename|size"
+    const seen = new Set(); // for dedup: "filename|size" or "url"
     let messageCount = 0;
 
     if (this.aborted) return attachments;
@@ -45,27 +107,51 @@ export class AttachmentCollector {
       if (this.aborted) break;
 
       for (const message of batch) {
-        if (!message.attachments || message.attachments.length === 0) continue;
+        // Collect direct Discord attachments
+        if (message.attachments?.length > 0) {
+          for (const att of message.attachments) {
+            if (!this._matchesFilter(att.filename, enabledExtensions)) continue;
 
-        for (const att of message.attachments) {
-          if (!this._matchesFilter(att.filename, enabledExtensions)) continue;
+            const key = `${att.filename}|${att.size}`;
+            if (seen.has(key)) continue;
+            seen.add(key);
 
-          // Dedup by filename + size
-          const key = `${att.filename}|${att.size}`;
+            attachments.push({
+              id: att.id,
+              filename: att.filename,
+              url: att.url,
+              size: att.size,
+              contentType: att.content_type || '',
+              messageId: message.id,
+              channelId,
+              channelName: this._sanitizeName(channelName),
+              authorName: message.author?.username || 'unknown',
+              timestamp: message.timestamp,
+            });
+          }
+        }
+
+        // Collect file URLs from message content
+        const linkedFiles = this._extractLinkedFiles(message.content, enabledExtensions);
+        for (const file of linkedFiles) {
+          if (file.isLink) continue; // Skip generic hosting links — they need manual download
+
+          const key = file.url;
           if (seen.has(key)) continue;
           seen.add(key);
 
           attachments.push({
-            id: att.id,
-            filename: att.filename,
-            url: att.url,
-            size: att.size,
-            contentType: att.content_type || '',
+            id: `link_${message.id}_${attachments.length}`,
+            filename: file.filename,
+            url: file.url,
+            size: 0, // Unknown for linked files
+            contentType: '',
             messageId: message.id,
             channelId,
             channelName: this._sanitizeName(channelName),
             authorName: message.author?.username || 'unknown',
             timestamp: message.timestamp,
+            source: 'content_link',
           });
         }
       }
