@@ -32,26 +32,23 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 
   if (message.type === 'ZIP_GENERATE') {
-    // Generate the ZIP and return a blob URL
     if (!zip) {
       sendResponse({ ok: false, error: 'ZIP not initialized' });
       return true;
     }
 
-    zip.generateAsync({ type: 'blob', compression: 'DEFLATE', compressionOptions: { level: 6 } })
-      .then(blob => {
-        const url = URL.createObjectURL(blob);
-        sendResponse({ ok: true, url, fileCount, size: blob.size });
+    zip.generateAsync({ type: 'base64', compression: 'DEFLATE', compressionOptions: { level: 6 } })
+      .then(base64 => {
+        sendResponse({ ok: true, base64, fileCount });
       })
       .catch(err => {
         sendResponse({ ok: false, error: err.message });
       });
 
-    return true; // Keep message channel open for async response
+    return true;
   }
 
   if (message.type === 'ZIP_CLEANUP') {
-    // Clean up
     zip = null;
     fileCount = 0;
     sendResponse({ ok: true });

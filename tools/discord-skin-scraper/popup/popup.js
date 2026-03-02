@@ -81,6 +81,18 @@ async function checkTokenStatus() {
       return;
     }
 
+    // If status is idle but popup is showing the progress step (e.g. service worker restarted),
+    // redirect back to server selection
+    if (status.status === 'idle' && status.hasToken) {
+      const progressStep = $('step-progress');
+      if (progressStep && !progressStep.classList.contains('hidden')) {
+        stopTokenPoll();
+        goToStep('step-guilds');
+        loadGuilds();
+        return;
+      }
+    }
+
     const badge = $('token-status');
     const label = $('token-label');
     const hint = $('token-hint');
@@ -559,6 +571,7 @@ chrome.runtime.onMessage.addListener((message) => {
       updateProgressUI(message.progress, message.attachmentCount);
     }
   }
+  // Ignore ZIP_INIT, ZIP_ADD_FILE, ZIP_GENERATE, ZIP_CLEANUP - they're for the offscreen doc
 });
 
 // ===== Event Bindings =====

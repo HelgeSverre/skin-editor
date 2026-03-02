@@ -266,11 +266,14 @@ async function downloadAsZip(attachments) {
 
       const path = `gearmulator-skins/${att.channelName}/${att.filename}`;
 
-      await chrome.runtime.sendMessage({
+      const addResult = await chrome.runtime.sendMessage({
         type: 'ZIP_ADD_FILE',
         path,
         data: base64,
       });
+      if (!addResult?.ok) {
+        throw new Error(addResult?.error || 'Failed to add file to ZIP');
+      }
 
       downloaded++;
     } catch (err) {
@@ -281,10 +284,10 @@ async function downloadAsZip(attachments) {
   // Generate the final ZIP blob
   const result = await chrome.runtime.sendMessage({ type: 'ZIP_GENERATE' });
 
-  if (result?.ok && result.url) {
-    // Trigger browser download
+  if (result?.ok && result.base64) {
+    const dataUrl = `data:application/zip;base64,${result.base64}`;
     await chrome.downloads.download({
-      url: result.url,
+      url: dataUrl,
       filename: 'gearmulator-skins.zip',
       conflictAction: 'uniquify',
     });
@@ -326,8 +329,9 @@ async function downloadIndividually(attachments) {
 function arrayBufferToBase64(buffer) {
   const bytes = new Uint8Array(buffer);
   let binary = '';
-  for (let i = 0; i < bytes.length; i++) {
-    binary += String.fromCharCode(bytes[i]);
+  const chunkSize = 8192;
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
   }
   return btoa(binary);
 }

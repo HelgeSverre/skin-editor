@@ -116,7 +116,7 @@ export class DiscordAPI {
         const result = await this.getArchivedPublicThreads(channelId, before);
         if (result.threads?.length > 0) {
           threads.push(...result.threads);
-          before = result.threads[result.threads.length - 1].thread_metadata?.archive_timestamp;
+          before = result.threads[result.threads.length - 1].id;
         }
         hasMore = result.has_more === true;
         if (!result.threads?.length) hasMore = false;
