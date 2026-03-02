@@ -34,11 +34,25 @@
     return { name: folder, url: `${baseUrl}/${folder}/${json}`, baseUrl, folder, emulator };
   }
 
+  function community(emulator: string, folder: string, json: string): SkinEntry {
+    const baseUrl = `/skins`;
+    return { name: folder, url: `${baseUrl}/${folder}/${json}`, baseUrl, folder, emulator };
+  }
+
   const availableSkins: SkinEntry[] = [
     // Osirus — Access Virus A/B/C
     local("Osirus", "osirus", "Galaxpel", "VirusC_Galaxpel.json"),
     local("Osirus", "osirus", "Trancy", "VirusC_Trancy.json"),
     local("Osirus", "osirus", "Hoverland", "VirusC_Hoverland.json"),
+    community("Osirus", "OSIRUS-C", "osirus-C.json"),
+    community("Osirus", "Polar_V1", "osirus-polar.json"),
+    community("Osirus", "OspirusXD", "OspirusXD.json"),
+    community("Osirus", "Vanguard", "Vanguard.json"),
+    community("Osirus", "XFutureNeon", "XFutureNeon.json"),
+    community("Osirus", "IceyBlues", "VirusC_IceyBlues.json"),
+    community("Osirus", "ShadyBlues", "VirusC_ShadyBlues.json"),
+    community("Osirus", "SummerBlues", "VirusC_SummerBlues.json"),
+    community("Osirus", "GalaxpelMM", "VirusC_GalaxpelMM.json"),
     // OsTIrus — Access Virus TI/TI2/Snow
     local("OsTIrus", "ostirus", "TrancyTI", "VirusTI_Trancy.json"),
     // Vavra — Waldorf microQ
