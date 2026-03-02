@@ -69,6 +69,8 @@
     community("Vavra", "VavraWhiteout", "VavraWhiteoutV3.0.json"),
     // Xenia — Waldorf Microwave II/XT
     local("Xenia", "xenia", "xtDefault", "xtDefault.json"),
+    // JE-8086 — Roland JU-06/JP-08
+    local("JE-8086", "je8086", "jeTrancy", "jeTrancy.json"),
     // Nodal Red 2x — Clavia Nord Lead/Rack 2x
     local("Nodal Red 2x", "nodal-red-2x", "n2xTrancy", "n2xTrancy.json"),
   ];

@@ -12,8 +12,9 @@
  * Outputs a .json file in the same directory.
  */
 
-import { readFileSync, writeFileSync, readdirSync } from "fs";
+import { readFileSync, writeFileSync, readdirSync, existsSync } from "fs";
 import { join, basename, extname } from "path";
+import { execSync } from "child_process";
 
 // ─── RCSS Parser ────────────────────────────────────────────────────────────
 
@@ -89,13 +90,13 @@ function parseRCSS(rcssText) {
 // ─── RML Parser (XML) ──────────────────────────────────────────────────────
 
 function parseRML(rmlText) {
-  // Simple XML parser — good enough for well-formed RML
-  // We'll use a state machine rather than DOMParser (not available in Node)
+  // Simple XML parser — tolerant of minor malformations in RML files
   const elements = [];
   const stack = [];
 
-  // Normalize self-closing tags
-  const normalized = rmlText
+  // Fix common RML typos (e.g., debugger=1" → debugger="1")
+  let cleaned = rmlText
+    .replace(/(\w+=)(\d+)"/g, '$1"$2"')
     .replace(/&lt;/g, "«LT»")
     .replace(/&gt;/g, "«GT»")
     .replace(/&amp;/g, "«AMP»");
@@ -105,7 +106,7 @@ function parseRML(rmlText) {
   let match;
   let root = null;
 
-  while ((match = tagRe.exec(normalized)) !== null) {
+  while ((match = tagRe.exec(cleaned)) !== null) {
     const isClosing = match[1] === "/";
     const tagName = match[2];
     const attrsStr = match[3];
@@ -132,7 +133,7 @@ function parseRML(rmlText) {
     // Extract text content (for labels/combos)
     let textContent = "";
     if (!isSelfClosing) {
-      const afterTag = normalized.slice(tagRe.lastIndex);
+      const afterTag = cleaned.slice(tagRe.lastIndex);
       const textMatch = afterTag.match(/^([^<]*)</);
       if (textMatch) {
         textContent = textMatch[1]
@@ -325,11 +326,15 @@ function convertNode(node, rcss, tabInfo) {
     if (!tabInfo.groups[groupName]) {
       tabInfo.groups[groupName] = { buttons: [], pages: [] };
     }
-    tabInfo.groups[groupName].pages[idx] = id;
+    // Auto-generate page name if element has no id
+    const pageName = id || `page_${idx}`;
+    tabInfo.groups[groupName].pages[idx] = pageName;
+    tabInfo.pendingPageName = !id ? pageName : null;
   }
 
   // Build the JSON element based on tag type
-  const element = { name: id };
+  const element = { name: tabInfo.pendingPageName || id };
+  tabInfo.pendingPageName = null;
 
   switch (node.tag) {
     case "img": {
@@ -337,10 +342,10 @@ function convertNode(node, rcss, tabInfo) {
       element.image = {
         x: x || "0",
         y: y || "0",
-        width: w || "0",
-        height: h || "0",
         texture: src,
       };
+      if (w) element.image.width = w;
+      if (h) element.image.height = h;
 
       // Process children (page containers)
       if (node.children.length > 0) {
@@ -440,6 +445,33 @@ function convertNode(node, rcss, tabInfo) {
       const isTextButton = nodeClasses.includes("juceTextButton");
       const textClass = findTextClass(nodeClasses, cssClasses);
       const textDef = textClass ? cssClasses.get(textClass) : {};
+      const hasTextContent = node.textContent || node.children.some((c) => c.textContent && !c.tag);
+
+      // If it's a plain container (no text styling, has children), treat as container
+      if (!isLabel && !isTextButton && !hasTextContent && node.children.length > 0) {
+        // Container div — convert children, pass through tab attributes
+        const children = [];
+        for (const child of node.children) {
+          const converted = convertNode(child, rcss, tabInfo);
+          if (converted) children.push(converted);
+        }
+        if (children.length > 0) {
+          element.children = children;
+        }
+        // If it has position, make it a container with image (no texture)
+        if (x || y) {
+          element.container = {
+            x: x || "0",
+            y: y || "0",
+            width: w || "0",
+            height: h || "0",
+          };
+        }
+        if (node.attrs.param) {
+          element.parameterAttachment = { parameter: node.attrs.param };
+        }
+        break;
+      }
 
       const textHeight = textDef["font-size"]
         ? stripDp(textDef["font-size"])
@@ -477,6 +509,22 @@ function convertNode(node, rcss, tabInfo) {
         element.label = props;
       }
 
+      if (node.attrs.param) {
+        element.parameterAttachment = { parameter: node.attrs.param };
+      }
+      break;
+    }
+
+    case "input": {
+      // Slider (<input type="range">)
+      const orientation = node.attrs.orientation || "horizontal";
+      element.slider = {
+        x: x || "0",
+        y: y || "0",
+        width: w || "0",
+        height: h || "0",
+        orientation,
+      };
       if (node.attrs.param) {
         element.parameterAttachment = { parameter: node.attrs.param };
       }
@@ -533,7 +581,7 @@ function convertNode(node, rcss, tabInfo) {
   return element;
 }
 
-function convert(rmlText, rcssText) {
+function convert(rmlText, rcssText, skinDir = null) {
   const rcss = parseRCSS(rcssText);
   const root = parseRML(rmlText);
 
@@ -554,14 +602,36 @@ function convert(rmlText, rcssText) {
     if (converted) children.push(converted);
   }
 
+  // Try to get dimensions from body style, or from first background image file
+  let rootW = stripDp(style.width);
+  let rootH = stripDp(style.height);
+  if ((!rootW || rootW === "0") && skinDir) {
+    // Try to read background image dimensions
+    const bgImg = children.find((c) => c.image?.texture);
+    if (bgImg?.image?.texture) {
+      const bgPath = join(skinDir, bgImg.image.texture + ".png");
+      if (existsSync(bgPath)) {
+        try {
+          const sipsOut = execSync(`sips -g pixelWidth -g pixelHeight "${bgPath}" 2>/dev/null`, { encoding: "utf8" });
+          const wMatch = sipsOut.match(/pixelWidth:\s*(\d+)/);
+          const hMatch = sipsOut.match(/pixelHeight:\s*(\d+)/);
+          if (wMatch && hMatch) {
+            rootW = wMatch[1];
+            rootH = hMatch[1];
+          }
+        } catch { /* fall through */ }
+      }
+    }
+  }
+
   // Build the JSON skin
   const skin = {
     name: root.attrs.id || "Root",
     root: {
       x: "0",
       y: "0",
-      width: stripDp(style.width) || "0",
-      height: stripDp(style.height) || "0",
+      width: rootW || "0",
+      height: rootH || "0",
       scale: root.attrs.rootScale || "0.5",
     },
   };
@@ -596,23 +666,23 @@ function main() {
   const files = readdirSync(dir);
 
   const rmlFile = files.find((f) => f.endsWith(".rml"));
-  const rcssFile = files.find((f) => f.endsWith(".rcss"));
+  const rcssFiles = files.filter((f) => f.endsWith(".rcss") && !f.startsWith("_"));
 
   if (!rmlFile) {
     console.error(`No .rml file found in ${dir}`);
     process.exit(1);
   }
-  if (!rcssFile) {
+  if (rcssFiles.length === 0) {
     console.error(`No .rcss file found in ${dir}`);
     process.exit(1);
   }
 
-  console.log(`Converting: ${rmlFile} + ${rcssFile}`);
+  console.log(`Converting: ${rmlFile} + ${rcssFiles.join(", ")}`);
 
   const rmlText = readFileSync(join(dir, rmlFile), "utf8");
-  const rcssText = readFileSync(join(dir, rcssFile), "utf8");
+  const rcssText = rcssFiles.map((f) => readFileSync(join(dir, f), "utf8")).join("\n");
 
-  const skin = convert(rmlText, rcssText);
+  const skin = convert(rmlText, rcssText, dir);
 
   const jsonName = basename(rmlFile, ".rml") + ".json";
   const outPath = join(dir, jsonName);
