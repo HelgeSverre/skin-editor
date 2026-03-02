@@ -231,6 +231,8 @@ function parseButtonProps(raw: Record<string, string>): ButtonProps {
     normalImageOn: num(raw.normalImageOn, 0),
     overImageOn: num(raw.overImageOn, 0),
     downImageOn: num(raw.downImageOn, 0),
+    disabledImage: num(raw.disabledImage, 0),
+    disabledImageOn: num(raw.disabledImageOn, 0),
   };
 }
 
@@ -270,6 +272,7 @@ function parseComboboxProps(raw: Record<string, string>): ComboboxProps {
     alignH: (raw.alignH as "L" | "C" | "R") ?? "L",
     alignV: (raw.alignV as "T" | "C" | "B") ?? "C",
     tooltip: raw.tooltip ?? "",
+    fontFile: raw.fontFile ?? "",
   };
 }
 

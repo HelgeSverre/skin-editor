@@ -62,6 +62,8 @@ export interface ButtonProps extends ElementPosition {
   normalImageOn: number;
   overImageOn: number;
   downImageOn: number;
+  disabledImage: number;
+  disabledImageOn: number;
 }
 
 export interface LabelProps extends ElementPosition {
@@ -88,6 +90,7 @@ export interface ComboboxProps extends ElementPosition {
   alignH: "L" | "C" | "R";
   alignV: "T" | "C" | "B";
   tooltip: string;
+  fontFile: string;
 }
 
 export interface TextbuttonProps extends ElementPosition {

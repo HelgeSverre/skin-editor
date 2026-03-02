@@ -53,7 +53,7 @@
     canvas.width = cssWidth * dpr;
     canvas.height = cssHeight * dpr;
     ctx = canvas.getContext("2d");
-    if (ctx) ctx.scale(dpr, dpr);
+    if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     dirty = true;
   });
 

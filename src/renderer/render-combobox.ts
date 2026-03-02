@@ -11,16 +11,25 @@ export function renderCombobox(
   const cb = element.combobox;
 
   const fontSize = cb.textHeight * scale;
-  ctx.font = `${fontSize}px sans-serif`;
+  const fontFamily = cb.fontFile || "sans-serif";
+  ctx.font = `${fontSize}px "${fontFamily}", sans-serif`;
   ctx.fillStyle = cb.color || "rgba(255, 255, 255, 1)";
-  ctx.textBaseline = "middle";
-  ctx.textAlign = "left";
 
-  const textY = y + h / 2;
   const padding = 4 * scale;
-  ctx.fillText(cb.text, x + padding, textY);
-
   const arrowSize = 6 * scale;
+
+  let textX = x + padding;
+  if (cb.alignH === "R") { ctx.textAlign = "right"; textX = x + w - padding - arrowSize - padding; }
+  else if (cb.alignH === "C") { ctx.textAlign = "center"; textX = x + w / 2; }
+  else { ctx.textAlign = "left"; }
+
+  let textY: number;
+  if (cb.alignV === "T") { ctx.textBaseline = "top"; textY = y; }
+  else if (cb.alignV === "B") { ctx.textBaseline = "bottom"; textY = y + h; }
+  else { ctx.textBaseline = "middle"; textY = y + h / 2; }
+
+  ctx.fillText(cb.text, textX, textY);
+
   const arrowX = x + w - padding - arrowSize;
   const arrowY = y + h / 2 - arrowSize / 2;
   ctx.beginPath();

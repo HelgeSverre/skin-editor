@@ -21,6 +21,7 @@ export function collectFonts(elements: SkinElement[]): Set<string> {
   const fonts = new Set<string>();
   function walk(el: SkinElement): void {
     if (el.label?.fontFile) fonts.add(el.label.fontFile);
+    if (el.combobox?.fontFile) fonts.add(el.combobox.fontFile);
     el.children?.forEach(walk);
   }
   elements.forEach(walk);
