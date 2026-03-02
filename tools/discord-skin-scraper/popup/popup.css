@@ -329,6 +329,31 @@ body {
   flex-shrink: 0;
 }
 
+/* ===== Channel Search ===== */
+.channel-search {
+  margin-bottom: 8px;
+}
+
+.channel-search input {
+  width: 100%;
+  padding: 8px 12px;
+  background: #1e1f22;
+  border: 1px solid #383a40;
+  border-radius: 6px;
+  color: #dbdee1;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.channel-search input::placeholder {
+  color: #6d6f78;
+}
+
+.channel-search input:focus {
+  border-color: #5865f2;
+}
+
 /* ===== Channel List ===== */
 .channel-actions {
   display: flex;
@@ -369,12 +394,30 @@ body {
   flex-shrink: 0;
 }
 
-.channel-hash {
+.channel-icon {
   color: #949ba4;
   font-size: 16px;
   flex-shrink: 0;
   width: 16px;
   text-align: center;
+}
+
+.channel-icon-forum {
+  font-size: 13px;
+}
+
+.channel-badge {
+  display: inline-block;
+  background: rgba(88, 101, 242, 0.2);
+  color: #8a93f5;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-left: 6px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 
 .channel-name {

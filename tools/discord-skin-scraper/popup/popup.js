@@ -217,6 +217,7 @@ async function loadChannels(guildId, guildName) {
   const title = $('channels-title');
   title.textContent = guildName || 'Select Channels';
   container.innerHTML = '<div class="loading-spinner">Loading channels...</div>';
+  $('channel-search-input').value = '';
   $('btn-channels-next').disabled = true;
 
   try {
@@ -233,9 +234,11 @@ async function loadChannels(guildId, guildName) {
       return;
     }
 
-    // Separate categories and text channels
+    // Separate categories and browsable channels
+    // Type 0 = text, 5 = announcement, 15 = forum, 16 = media
     const categories = channels.filter(c => c.type === 4);
-    const textChannels = channels.filter(c => c.type === 0);
+    const browsableTypes = new Set([0, 5, 15, 16]);
+    const textChannels = channels.filter(c => browsableTypes.has(c.type));
 
     // Sort categories by position
     categories.sort((a, b) => a.position - b.position);
@@ -289,34 +292,55 @@ function renderChannelGroup(container, categoryName, channels) {
   }
 
   for (const ch of channels) {
+    const isForum = ch.type === 15 || ch.type === 16;
+
     const row = document.createElement('div');
     row.className = 'channel-row';
+    row.dataset.channelNameLower = ch.name.toLowerCase();
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.dataset.channelId = ch.id;
     checkbox.dataset.channelName = ch.name;
+    checkbox.dataset.channelType = ch.type;
     checkbox.addEventListener('change', updateChannelNextButton);
 
-    const hash = document.createElement('span');
-    hash.className = 'channel-hash';
-    hash.textContent = '#';
+    const icon = document.createElement('span');
+    icon.className = 'channel-icon';
+    if (isForum) {
+      // Forum/media channel icon (posts icon)
+      icon.textContent = '\u{1F4CB}';
+      icon.title = 'Forum channel';
+      icon.className = 'channel-icon channel-icon-forum';
+    } else {
+      icon.textContent = '#';
+      icon.className = 'channel-icon';
+    }
 
     const name = document.createElement('span');
     name.className = 'channel-name';
     name.textContent = ch.name;
+
+    if (isForum) {
+      const badge = document.createElement('span');
+      badge.className = 'channel-badge';
+      badge.textContent = 'Forum';
+      name.appendChild(badge);
+    }
 
     const threadToggle = document.createElement('label');
     threadToggle.className = 'thread-toggle';
     const threadCheckbox = document.createElement('input');
     threadCheckbox.type = 'checkbox';
     threadCheckbox.dataset.threadToggle = ch.id;
+    // Forum channels are thread-based by nature — default threads ON
+    if (isForum) threadCheckbox.checked = true;
     const threadLabel = document.createTextNode('Threads');
     threadToggle.appendChild(threadCheckbox);
     threadToggle.appendChild(threadLabel);
 
     row.appendChild(checkbox);
-    row.appendChild(hash);
+    row.appendChild(icon);
     row.appendChild(name);
     row.appendChild(threadToggle);
     container.appendChild(row);
@@ -332,20 +356,53 @@ function getSelectedChannels() {
   const checkboxes = document.querySelectorAll('#channel-list input[data-channel-id]:checked');
   const channels = [];
   for (const cb of checkboxes) {
+    const channelType = parseInt(cb.dataset.channelType) || 0;
+    const isForum = channelType === 15 || channelType === 16;
     const threadToggle = document.querySelector(
       `#channel-list input[data-thread-toggle="${cb.dataset.channelId}"]`
     );
     channels.push({
       id: cb.dataset.channelId,
       name: cb.dataset.channelName,
-      includeThreads: threadToggle ? threadToggle.checked : false,
+      // Forum/media channels are thread-based — always include threads
+      includeThreads: isForum || (threadToggle ? threadToggle.checked : false),
     });
   }
   return channels;
 }
 
+function filterChannels(query) {
+  const q = query.toLowerCase().trim();
+  const rows = document.querySelectorAll('#channel-list .channel-row');
+  const headers = document.querySelectorAll('#channel-list .category-header');
+
+  // Track which categories have visible children
+  const categoryVisibility = new Map();
+
+  for (const row of rows) {
+    const name = row.dataset.channelNameLower || '';
+    const visible = !q || name.includes(q);
+    row.style.display = visible ? '' : 'none';
+
+    // Find the preceding category header
+    let prev = row.previousElementSibling;
+    while (prev && !prev.classList.contains('category-header')) {
+      prev = prev.previousElementSibling;
+    }
+    if (prev) {
+      categoryVisibility.set(prev, (categoryVisibility.get(prev) || false) || visible);
+    }
+  }
+
+  // Show/hide category headers based on whether they have visible children
+  for (const header of headers) {
+    header.style.display = categoryVisibility.get(header) ? '' : 'none';
+  }
+}
+
 function selectAllChannels() {
-  const checkboxes = document.querySelectorAll('#channel-list input[data-channel-id]');
+  // Only select visible (non-filtered) channels
+  const checkboxes = document.querySelectorAll('#channel-list .channel-row:not([style*="display: none"]) input[data-channel-id]');
   for (const cb of checkboxes) cb.checked = true;
   updateChannelNextButton();
 }
@@ -583,6 +640,9 @@ document.addEventListener('DOMContentLoaded', () => {
   $('btn-back-guilds').addEventListener('click', () => {
     goToStep('step-guilds');
     loadGuilds();
+  });
+  $('channel-search-input').addEventListener('input', (e) => {
+    filterChannels(e.target.value);
   });
   $('btn-select-all').addEventListener('click', selectAllChannels);
   $('btn-deselect-all').addEventListener('click', deselectAllChannels);
