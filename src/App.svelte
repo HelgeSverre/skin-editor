@@ -21,13 +21,35 @@
   import ErrorBanner from "./ui/ErrorBanner.svelte";
   import Tooltip from "./ui/Tooltip.svelte";
 
-  const baseUrl =
-    "https://raw.githubusercontent.com/dsp56300/gearmulator/main/source/osirusJucePlugin/skins";
+  const ghBase = "https://raw.githubusercontent.com/dsp56300/gearmulator/main/source";
 
-  const availableSkins = [
-    { name: "Galaxpel", url: `${baseUrl}/Galaxpel/VirusC_Galaxpel.json` },
-    { name: "Trancy", url: `${baseUrl}/Trancy/VirusC_Trancy.json` },
-    { name: "Hoverland", url: `${baseUrl}/Hoverland/VirusC_Hoverland.json` },
+  interface SkinEntry {
+    name: string;
+    url: string;
+    baseUrl: string;
+    folder: string;
+    emulator: string;
+  }
+
+  function entry(emulator: string, plugin: string, folder: string, json: string): SkinEntry {
+    const baseUrl = `${ghBase}/${plugin}/skins`;
+    return { name: folder, url: `${baseUrl}/${folder}/${json}`, baseUrl, folder, emulator };
+  }
+
+  const availableSkins: SkinEntry[] = [
+    // Osirus — Access Virus A/B/C
+    entry("Osirus", "osirusJucePlugin", "Galaxpel", "VirusC_Galaxpel.json"),
+    entry("Osirus", "osirusJucePlugin", "Trancy", "VirusC_Trancy.json"),
+    entry("Osirus", "osirusJucePlugin", "Hoverland", "VirusC_Hoverland.json"),
+    // OsTIrus — Access Virus TI/TI2/Snow
+    entry("OsTIrus", "osTIrusJucePlugin", "TrancyTI", "VirusTI_Trancy.json"),
+    // Vavra — Waldorf microQ
+    entry("Vavra", "mqJucePlugin", "mqDefault", "mqDefault.json"),
+    entry("Vavra", "mqJucePlugin", "mqFrontPanel", "mqFrontPanel.json"),
+    // Xenia — Waldorf Microwave II/XT
+    entry("Xenia", "xtJucePlugin", "xtDefault", "xtDefault.json"),
+    // Nodal Red 2x — Clavia Nord Lead/Rack 2x
+    entry("Nodal Red 2x", "nord/n2x/n2xJucePlugin", "n2xTrancy", "n2xTrancy.json"),
   ];
 
   let skin: SkinDefinition | null = $state(null);
@@ -64,12 +86,13 @@
     return () => window.removeEventListener("mousemove", trackMouse);
   });
 
-  async function loadSkin(entry: { name: string; url: string }) {
+  async function loadSkin(entry: SkinEntry) {
     if (currentCache) {
       disposeCache(currentCache);
       currentCache = null;
     }
     activeSkinName = entry.name;
+    activeSkinEntry = entry;
     imageCache = {};
     missingTextures = [];
     parseErrors = [];
@@ -100,8 +123,8 @@
       const { cache, missingTextures: missing } = await loadAssets(
         textures,
         fonts,
-        baseUrl,
-        entry.name,
+        entry.baseUrl,
+        entry.folder,
         (p) => {
           loadProgress = p;
         },
