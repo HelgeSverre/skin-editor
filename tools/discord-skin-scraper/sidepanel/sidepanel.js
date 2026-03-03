@@ -401,15 +401,22 @@ function filterChannels(query) {
 }
 
 function selectAllChannels() {
-  // Only select visible (non-filtered) channels
-  const checkboxes = document.querySelectorAll('#channel-list .channel-row:not([style*="display: none"]) input[data-channel-id]');
-  for (const cb of checkboxes) cb.checked = true;
+  // Only select visible (non-filtered) channels and their thread toggles
+  const rows = document.querySelectorAll('#channel-list .channel-row:not([style*="display: none"])');
+  for (const row of rows) {
+    const cb = row.querySelector('input[data-channel-id]');
+    const threadCb = row.querySelector('input[data-thread-toggle]');
+    if (cb) cb.checked = true;
+    if (threadCb) threadCb.checked = true;
+  }
   updateChannelNextButton();
 }
 
 function deselectAllChannels() {
   const checkboxes = document.querySelectorAll('#channel-list input[data-channel-id]');
+  const threadCheckboxes = document.querySelectorAll('#channel-list input[data-thread-toggle]');
   for (const cb of checkboxes) cb.checked = false;
+  for (const cb of threadCheckboxes) cb.checked = false;
   updateChannelNextButton();
 }
 

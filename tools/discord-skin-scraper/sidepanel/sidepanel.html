@@ -4,14 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Skin Scraper</title>
-  <link rel="stylesheet" href="popup.css">
+  <link rel="stylesheet" href="sidepanel.css">
 </head>
 <body>
-  <header class="header">
-    <h1 class="header-title">Skin Scraper</h1>
-    <span class="header-subtitle">Gearmulator</span>
-  </header>
-
   <!-- Step 1: Token Status -->
   <section id="step-token" class="step">
     <div class="step-content center">
@@ -63,24 +58,44 @@
     <p class="hint">Select which file types to download:</p>
     <div class="filter-list">
       <label class="filter-item">
-        <input type="checkbox" data-extensions=".zip,.7z,.rar" checked>
+        <input type="checkbox" data-extensions=".zip,.7z,.rar,.tar,.gz,.tgz" checked>
         <span class="filter-label">Archives</span>
-        <span class="filter-exts">.zip .7z .rar</span>
+        <span class="filter-exts">.zip .7z .rar .tar .gz</span>
       </label>
       <label class="filter-item">
-        <input type="checkbox" data-extensions=".json,.json5" checked>
+        <input type="checkbox" data-extensions=".json,.json5,.xml,.rml,.rcss" checked>
         <span class="filter-label">Skin files</span>
-        <span class="filter-exts">.json .json5</span>
+        <span class="filter-exts">.json .json5 .xml .rml .rcss</span>
       </label>
       <label class="filter-item">
-        <input type="checkbox" data-extensions=".png,.jpg,.jpeg,.bmp" checked>
+        <input type="checkbox" data-extensions=".png,.jpg,.jpeg,.bmp,.svg,.gif,.webp" checked>
         <span class="filter-label">Images</span>
-        <span class="filter-exts">.png .jpg .jpeg .bmp</span>
+        <span class="filter-exts">.png .jpg .bmp .svg .gif .webp</span>
       </label>
       <label class="filter-item">
-        <input type="checkbox" data-extensions=".ttf,.otf,.woff" checked>
+        <input type="checkbox" data-extensions=".ttf,.otf,.woff,.woff2" checked>
         <span class="filter-label">Fonts</span>
-        <span class="filter-exts">.ttf .otf .woff</span>
+        <span class="filter-exts">.ttf .otf .woff .woff2</span>
+      </label>
+      <label class="filter-item">
+        <input type="checkbox" data-extensions=".mid,.midi,.syx" checked>
+        <span class="filter-label">MIDI / SysEx</span>
+        <span class="filter-exts">.mid .midi .syx</span>
+      </label>
+      <label class="filter-item">
+        <input type="checkbox" data-extensions=".wav,.mp3,.ogg,.flac,.aif,.aiff" checked>
+        <span class="filter-label">Audio</span>
+        <span class="filter-exts">.wav .mp3 .ogg .flac .aif</span>
+      </label>
+      <label class="filter-item">
+        <input type="checkbox" data-extensions=".fxp,.fxb,.vstpreset,.nmsv,.h2p" checked>
+        <span class="filter-label">Presets</span>
+        <span class="filter-exts">.fxp .fxb .vstpreset .nmsv .h2p</span>
+      </label>
+      <label class="filter-item">
+        <input type="checkbox" data-extensions=".pdf,.txt,.md,.doc,.docx">
+        <span class="filter-label">Documents</span>
+        <span class="filter-exts">.pdf .txt .md .doc</span>
       </label>
     </div>
     <div class="step-footer">
@@ -152,6 +167,6 @@
     </div>
   </section>
 
-  <script src="popup.js"></script>
+  <script src="sidepanel.js"></script>
 </body>
 </html>

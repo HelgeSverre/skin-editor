@@ -9,6 +9,9 @@ const rateLimiter = new RateLimiter();
 const api = new DiscordAPI(rateLimiter);
 const collector = new AttachmentCollector(api);
 
+// --- Open side panel on toolbar icon click ---
+chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true });
+
 // --- State ---
 let state = {
   token: null,

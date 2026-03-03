@@ -2,9 +2,10 @@
   import { onMount } from "svelte";
   import { parseSkin } from "./lib/parse";
   import {
-    collectTextures,
+    collectTexturesByPage,
     collectFonts,
-    loadAssets,
+    loadImageBatch,
+    loadFontBatch,
     disposeCache,
   } from "./lib/asset-loader";
   import type {
@@ -109,7 +110,10 @@
     return () => window.removeEventListener("mousemove", trackMouse);
   });
 
+  let loadGeneration = 0;
+
   async function loadSkin(entry: SkinEntry) {
+    const gen = ++loadGeneration;
     if (currentCache) {
       disposeCache(currentCache);
       currentCache = null;
@@ -132,6 +136,8 @@
         ];
         return;
       }
+      if (gen !== loadGeneration) return;
+
       const text = await response.text();
       const result = parseSkin(text);
       skin = result.skin;
@@ -139,25 +145,77 @@
       scale = skin.root.scale || 0.5;
       activeTab = skin.tabgroup?.pages[0] ?? "";
 
-      const textures = collectTextures(skin.children);
+      const { global, byPage } = collectTexturesByPage(skin.children);
       const fonts = collectFonts(skin.children);
 
-      const { cache, missingTextures: missing } = await loadAssets(
-        textures,
-        fonts,
-        entry.baseUrl,
-        entry.folder,
-        (p) => {
-          loadProgress = p;
-        },
-      );
+      // Phase 1: load global textures + active tab textures + fonts in parallel
+      const activePageTextures = byPage[activeTab] ?? new Set();
+      const priorityTextures = new Set([...global, ...activePageTextures]);
+      const allTextures = new Set([
+        ...priorityTextures,
+        ...Object.values(byPage).flatMap((s) => [...s]),
+      ]);
+      const totalAssets = allTextures.size + fonts.size;
+      let loadedCount = 0;
 
-      currentCache = cache;
-      imageCache = cache.images;
-      missingTextures = missing;
+      const allImages: Record<string, HTMLImageElement> = {};
+      const allMissing: string[] = [];
+
+      const streamer = (name: string, img: HTMLImageElement) => {
+        if (gen !== loadGeneration) return;
+        allImages[name] = img;
+        imageCache = { ...imageCache, [name]: img };
+      };
+
+      const [priorityResult] = await Promise.all([
+        loadImageBatch(
+          priorityTextures,
+          entry.baseUrl,
+          entry.folder,
+          streamer,
+          (l) => {
+            loadedCount = l;
+            loadProgress = { loaded: loadedCount, total: totalAssets };
+          },
+        ),
+        loadFontBatch(fonts, entry.baseUrl, entry.folder),
+      ]);
+      if (gen !== loadGeneration) return;
+
+      Object.assign(allImages, priorityResult.images);
+      allMissing.push(...priorityResult.missing);
+
+      // Phase 2: load remaining tab textures in background
+      const remainingTextures = new Set<string>();
+      for (const tex of allTextures) {
+        if (!priorityTextures.has(tex)) remainingTextures.add(tex);
+      }
+
+      if (remainingTextures.size > 0) {
+        const bgResult = await loadImageBatch(
+          remainingTextures,
+          entry.baseUrl,
+          entry.folder,
+          streamer,
+          (l) => {
+            loadedCount = priorityTextures.size + l;
+            loadProgress = { loaded: loadedCount, total: totalAssets };
+          },
+        );
+        if (gen !== loadGeneration) return;
+
+        Object.assign(allImages, bgResult.images);
+        allMissing.push(...bgResult.missing);
+      }
+
+      currentCache = { images: allImages, fonts: new Set() };
+      imageCache = { ...allImages };
+      missingTextures = allMissing;
       loadProgress = null;
     } catch (e) {
-      parseErrors = [{ path: "load", message: `${e}` }];
+      if (gen === loadGeneration) {
+        parseErrors = [{ path: "load", message: `${e}` }];
+      }
     }
   }
 

@@ -3,7 +3,7 @@
   "name": "Gearmulator Skin Scraper",
   "version": "1.0.0",
   "description": "Bulk-download synthesizer skin attachments from Discord",
-  "permissions": ["webRequest", "storage", "downloads", "offscreen", "alarms"],
+  "permissions": ["webRequest", "storage", "downloads", "offscreen", "alarms", "sidePanel"],
   "host_permissions": [
     "https://discord.com/*",
     "https://*.discord.com/*",
@@ -26,8 +26,10 @@
       "world": "MAIN"
     }
   ],
+  "side_panel": {
+    "default_path": "sidepanel/sidepanel.html"
+  },
   "action": {
-    "default_popup": "popup/popup.html",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",

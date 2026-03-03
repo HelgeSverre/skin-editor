@@ -1,10 +1,14 @@
 // background/attachment-collector.js
 
 const SKIN_EXTENSIONS = new Set([
-  '.zip', '.7z', '.rar',
-  '.json', '.json5',
-  '.png', '.jpg', '.jpeg', '.bmp',
-  '.ttf', '.otf', '.woff',
+  '.zip', '.7z', '.rar', '.tar', '.gz', '.tgz',
+  '.json', '.json5', '.xml', '.rml', '.rcss',
+  '.png', '.jpg', '.jpeg', '.bmp', '.svg', '.gif', '.webp',
+  '.ttf', '.otf', '.woff', '.woff2',
+  '.mid', '.midi', '.syx',
+  '.wav', '.mp3', '.ogg', '.flac', '.aif', '.aiff',
+  '.fxp', '.fxb', '.vstpreset', '.nmsv', '.h2p',
+  '.pdf', '.txt', '.md', '.doc', '.docx',
 ]);
 
 // Pattern to extract URLs from message content that point to downloadable files

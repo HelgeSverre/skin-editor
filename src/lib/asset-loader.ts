@@ -17,6 +17,35 @@ export function collectTextures(elements: SkinElement[]): Set<string> {
   return textures;
 }
 
+/** Split textures into global (always visible) and per-page sets. */
+export function collectTexturesByPage(
+  elements: SkinElement[],
+): { global: Set<string>; byPage: Record<string, Set<string>> } {
+  const global = new Set<string>();
+  const byPage: Record<string, Set<string>> = {};
+
+  function addTexture(el: SkinElement, page: string | null) {
+    const tex =
+      el.image?.texture ?? el.button?.texture ?? el.spritesheet?.texture;
+    if (!tex) return;
+    if (page) {
+      (byPage[page] ??= new Set()).add(tex);
+    } else {
+      global.add(tex);
+    }
+  }
+
+  function walk(el: SkinElement, ownerPage: string | null): void {
+    // If this element is a page root, its subtree belongs to that page
+    const page = el._page ?? ownerPage;
+    addTexture(el, page);
+    el.children?.forEach((child) => walk(child, page));
+  }
+
+  elements.forEach((el) => walk(el, null));
+  return { global, byPage };
+}
+
 export function collectFonts(elements: SkinElement[]): Set<string> {
   const fonts = new Set<string>();
   function walk(el: SkinElement): void {
@@ -66,6 +95,53 @@ async function loadFont(name: string, url: string): Promise<void> {
   }
 }
 
+/** Load a batch of textures, calling onImage as each one resolves. */
+export async function loadImageBatch(
+  names: Set<string>,
+  baseUrl: string,
+  skinName: string,
+  onImage?: (name: string, img: HTMLImageElement) => void,
+  onProgress?: (loaded: number, total: number) => void,
+): Promise<{ images: Record<string, HTMLImageElement>; missing: string[] }> {
+  const images: Record<string, HTMLImageElement> = {};
+  const missing: string[] = [];
+  let loaded = 0;
+  const total = names.size;
+
+  await Promise.allSettled(
+    Array.from(names).map(async (name) => {
+      const url = `${baseUrl}/${skinName}/${name}.png`;
+      try {
+        const img = await loadImageWithRetry(url);
+        images[name] = img;
+        onImage?.(name, img);
+      } catch {
+        missing.push(name);
+      }
+      loaded++;
+      onProgress?.(loaded, total);
+    }),
+  );
+
+  return { images, missing };
+}
+
+export async function loadFontBatch(
+  fonts: Set<string>,
+  baseUrl: string,
+  skinName: string,
+): Promise<Set<string>> {
+  const loadedFonts = new Set<string>();
+  await Promise.allSettled(
+    Array.from(fonts).map(async (name) => {
+      const url = `${baseUrl}/${skinName}/${name}.ttf`;
+      await loadFont(name, url);
+      loadedFonts.add(name);
+    }),
+  );
+  return loadedFonts;
+}
+
 export async function loadAssets(
   textures: Set<string>,
   fonts: Set<string>,
@@ -75,38 +151,24 @@ export async function loadAssets(
 ): Promise<{ cache: AssetCache; missingTextures: string[] }> {
   const total = textures.size + fonts.size;
   let loaded = 0;
-  const images: Record<string, HTMLImageElement> = {};
-  const loadedFonts = new Set<string>();
-  const missingTextures: string[] = [];
   const report = () => onProgress?.({ loaded, total });
 
-  const imageEntries = Array.from(textures);
-  await Promise.allSettled(
-    imageEntries.map(async (name) => {
-      const url = `${baseUrl}/${skinName}/${name}.png`;
-      try {
-        const img = await loadImageWithRetry(url);
-        images[name] = img;
-      } catch {
-        missingTextures.push(name);
-      }
-      loaded++;
+  const { images, missing } = await loadImageBatch(
+    textures,
+    baseUrl,
+    skinName,
+    undefined,
+    (l) => {
+      loaded = l;
       report();
-    }),
+    },
   );
 
-  const fontEntries = Array.from(fonts);
-  await Promise.allSettled(
-    fontEntries.map(async (name) => {
-      const url = `${baseUrl}/${skinName}/${name}.ttf`;
-      await loadFont(name, url);
-      loadedFonts.add(name);
-      loaded++;
-      report();
-    }),
-  );
+  const loadedFonts = await loadFontBatch(fonts, baseUrl, skinName);
+  loaded = total;
+  report();
 
-  return { cache: { images, fonts: loadedFonts }, missingTextures };
+  return { cache: { images, fonts: loadedFonts }, missingTextures: missing };
 }
 
 export function disposeCache(cache: AssetCache): void {
